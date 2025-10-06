@@ -1,0 +1,6 @@
+images/image9.png
+images/image13.png
+images/image35.png
+images/red_circle.jpeg
+images/ferrari.png
+images/image_non.png
