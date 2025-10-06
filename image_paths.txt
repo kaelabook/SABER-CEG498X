@@ -4,3 +4,7 @@ images/image35.png
 images/red_circle.jpeg
 images/ferrari.png
 images/image_non.png
+images/wsu.png
+images/onions.jpeg
+images/oopsallberries.png
+images/twentyonepilots.png

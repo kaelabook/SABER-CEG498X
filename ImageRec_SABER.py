@@ -153,21 +153,21 @@ class ImageRec_SABER:
             if circles is not None:
                 circles = np.uint16(np.around(circles))
                 self.circle_index_array.append(i)
-                #for i in circles[0,:]:
-                        # draw the outer circle
-                        #cv2.circle(image,(i[0],i[1]),i[2],(0,255,0),2)
+                for i in circles[0,:]:
+                    #draw the outer circle
+                    cv2.circle(image,(i[0],i[1]),i[2],(0,255,0),2)
                         # draw the center of the circle
-                        #cv2.circle(image,(i[0],i[1]),2,(0,0,255),3)
+                    cv2.circle(image,(i[0],i[1]),2,(0,0,255),3)
 
     #here for debugging don't use unless you uncomment the 'for i in circles[0,:]:' loop in find_circles(), 
     # also should not be used at all for production because it edits the original images, might fix this later
-    """def plot_circles(self):
+    def plot_circles(self):
      
         for image in self.bgr_image_array:
             cv2.imshow('image', image)
             cv2.waitKey(0)
             # Destroy all created windows
-            cv2.destroyAllWindows()    """
+            cv2.destroyAllWindows()
     
     """
     name: print_results
@@ -193,6 +193,7 @@ class ImageRec_SABER:
         self.bgr_conversion()
         self.find_circles()
         self.print_results()
+        self.plot_circles()
 
 
 
