@@ -47,6 +47,6 @@ class Encrytion_SABER:
         for file in self.black_side_files:
             with open(file,"rb"):
                 black = file.read()
-            self.black_side_files.append(f.encrypt(black))
+            self.red_side_files.append(f.encrypt(black))
         self.dump_keys()
         del f
