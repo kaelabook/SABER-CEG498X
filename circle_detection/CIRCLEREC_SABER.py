@@ -5,14 +5,13 @@ from pathlib import Path
 import os
 
 #Constants
-
 #HSV Red Spectrum Upper and lower values
 LRED1 = np.array([0,100,100])
 URED1 = np.array([10,255,255])
 LRED2 = np.array([160,100,100])
 URED2 = np.array([180,255,255])
 
-class ImageRec_SABER:
+class CIRCLEREC_SABER:
     def __init__(self):
         self.list_file = 'image_paths.txt'
         self.image_array = []
@@ -35,7 +34,7 @@ class ImageRec_SABER:
     eventually will need to load in image file names either from an entire directory (mounted flash drive), or a file
     Update 10/6/2025 - files able to be loaded in from text file
     """
-    def load_images(self):
+    def  _load_images(self):
         try:
             with open(self.list_file) as f:
                 for line in f:
@@ -73,7 +72,7 @@ class ImageRec_SABER:
     converts the original image files to hsv which represents the image as a hue spectrum instead of its standard RGB value
 
     """
-    def hsv_conversion(self):
+    def _hsv_conversion(self):
         #takes the original images and converts them all to hsv format to determine the hue value makeup of the images
         for image in self.image_array:
             self.hsv_image_array.append(cv2.cvtColor(image,cv2.COLOR_BGR2HSV))
@@ -84,7 +83,7 @@ class ImageRec_SABER:
     masks all images to only red hues, this will be used to determine if an image should be thrown out or kept for circle detection
     
     """
-    def mask_red(self):
+    def _mask_red(self):
         #
         for i,image in enumerate(self.hsv_image_array):
             #create redmask on image list
@@ -106,7 +105,7 @@ class ImageRec_SABER:
     converts masked images to bgr for further circle detection
     
     """
-    def bgr_conversion(self):
+    def _bgr_conversion(self):
         for image in self.masked_image_array:
              self.bgr_image_array.append(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
     """
@@ -128,9 +127,9 @@ class ImageRec_SABER:
     finds circles in the images, detects using cv2s Hough transform, some magic number parameters
     """
     
-    def find_circles(self):
+    def _find_circles(self):
 
-        for i,image in enumerate(self.bgr_image_array): 
+        for i, image in enumerate(self.bgr_image_array):
             #convert to grayscale, needed for circle detection
             gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
@@ -153,11 +152,11 @@ class ImageRec_SABER:
             if circles is not None:
                 circles = np.uint16(np.around(circles))
                 self.circle_index_array.append(i)
-                for i in circles[0,:]:
+                for j in circles[0,:]:
                     #draw the outer circle
-                    cv2.circle(image,(i[0],i[1]),i[2],(0,255,0),2)
+                    cv2.circle(image,(j[0],j[1]),j[2],(0,255,0),2)
                         # draw the center of the circle
-                    cv2.circle(image,(i[0],i[1]),2,(0,0,255),3)
+                    cv2.circle(image,(j[0],j[1]),2,(0,0,255),3)
 
     #here for debugging don't use unless you uncomment the 'for i in circles[0,:]:' loop in find_circles(), 
     # also should not be used at all for production because it edits the original images, might fix this later
@@ -176,7 +175,7 @@ class ImageRec_SABER:
     prints resulting red detection and circle detection, mostly used for debug but will eventually be utilized
     to send to code used for encryption/compression/encoding for transmission
     """
-   
+
     def print_results(self):
         for index in self.red_index_array:
             print('Red detected in ' + self.image_files[index])
@@ -185,20 +184,43 @@ class ImageRec_SABER:
         # to recover the original file names we have to index the red_index_array from the circle_index_array
         for index in self.circle_index_array:
             print('Circle detected in ' + self.image_files[self.red_index_array[index]])
-    
-    def full_analysis(self):
-        self.load_images()
-        self.hsv_conversion()
-        self.mask_red()
-        self.bgr_conversion()
-        self.find_circles()
+    """
+    name: write_results_to_file
+    last edit: 11/22/25
+    description:
+    dumps the paths to all the images with red circles to a file
+    """
+    def _write_results_to_file(self):
+        f = open("results/detected.txt",'w+')
+        for index in self.circle_index_array:
+            f.write(self.image_files[self.red_index_array[index]] + '\n')
+
+    """
+    name: db_full_analysis
+    last edit: 11/22/25
+    description:
+    debug analysis method, calls all methods in order to perform an analysis, prints and plots images with circles
+     """
+    def _db_full_analysis(self):
+        self._load_images()
+        self._hsv_conversion()
+        self._mask_red()
+        self._bgr_conversion()
+        self._find_circles()
         self.print_results()
         self.plot_circles()
+        self._write_results_to_file()
 
-
-
-
-
-
-testObject = ImageRec_SABER()
-testObject.full_analysis()
+    """
+    name: analyze   
+    last edit: 11/22/25
+    description:
+    main function for the class, performs all analysis steps, writes passing images to a file
+    """
+    def analyze(self):
+        self._load_images()
+        self._hsv_conversion()
+        self._mask_red()
+        self._bgr_conversion()
+        self._find_circles()
+        self._write_results_to_file()
