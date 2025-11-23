@@ -1,0 +1,3 @@
+image_rec:
+  list: 'image_paths.txt'
+  output: 'results/detected.txt'

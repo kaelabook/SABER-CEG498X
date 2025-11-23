@@ -3,7 +3,7 @@ import cv2
 import numpy as np
 from pathlib import Path
 import os
-
+from database.Database_SABER import Database_SABER
 #Constants
 #HSV Red Spectrum Upper and lower values
 LRED1 = np.array([0,100,100])
@@ -11,9 +11,8 @@ URED1 = np.array([10,255,255])
 LRED2 = np.array([160,100,100])
 URED2 = np.array([180,255,255])
 
-class CIRCLEREC_SABER:
+class CircleRec_SABER:
     def __init__(self):
-        self.list_file = 'image_paths.txt'
         self.image_array = []
         self.hsv_image_array = []
         self.bgr_image_array = []
@@ -21,12 +20,10 @@ class CIRCLEREC_SABER:
         self.masked_image_array = []
         self.circle_index_array = []
         self.circle_array = []
-        self.image_files = []
-        self.image_files_names = []
+        self.image_paths = None
+        self.DB = Database_SABER()
 
-
-    """
-    name: load_images
+    """    name: load_images
     last edit: 10/5/2025 SAM
     description: 
     loads the test images in, appends them to the image_array class parameter for self use later
@@ -35,20 +32,9 @@ class CIRCLEREC_SABER:
     Update 10/6/2025 - files able to be loaded in from text file
     """
     def  _load_images(self):
-        try:
-            with open(self.list_file) as f:
-                for line in f:
-                    path = line.strip()
-                    if path and os.path.exists(path):
-                        self.image_files.append(path)
-                    elif path:
-                        print(f"Warning: Image path not found or invalid: {path} ")
-        except FileNotFoundError:
-            print(f"Error: Text file not found at {self.list_file}")       
-            
-
-        for file in self.image_files:
-            self.image_array.append(cv2.imread(file))
+        self.image_paths=self.DB.retrieve_image_paths()
+        for path in self.image_paths:
+            self.image_array.append(cv2.imread(path))
 
     """
     name: plot_images
@@ -95,15 +81,16 @@ class CIRCLEREC_SABER:
             if cv2.countNonZero(red_mask) > 0:
                 self.masked_image_array.append(red_mask)
                 self.red_index_array.append(i)
+                self.DB.update_red(self.image_paths[i],1)
                 #print('red found in image')
-            #else:
-                #print('red not found in image')
+            else:
+                self.DB.update_red(self.image_paths[i],0)
+                self.DB.update_circle(self.image_paths[i], 0)
     """
     name: mask_red
     last edit: 10/5/2025 SAM
     description: 
     converts masked images to bgr for further circle detection
-    
     """
     def _bgr_conversion(self):
         for image in self.masked_image_array:
@@ -152,12 +139,14 @@ class CIRCLEREC_SABER:
             if circles is not None:
                 circles = np.uint16(np.around(circles))
                 self.circle_index_array.append(i)
+                self.DB.update_circle(self.image_paths[self.red_index_array[i]],hascircle=1)
                 for j in circles[0,:]:
                     #draw the outer circle
                     cv2.circle(image,(j[0],j[1]),j[2],(0,255,0),2)
                         # draw the center of the circle
                     cv2.circle(image,(j[0],j[1]),2,(0,0,255),3)
-
+            else:
+                self.DB.update_circle(self.image_paths[self.red_index_array[i]], hascircle=0)
     #here for debugging don't use unless you uncomment the 'for i in circles[0,:]:' loop in find_circles(), 
     # also should not be used at all for production because it edits the original images, might fix this later
     def plot_circles(self):
@@ -178,22 +167,19 @@ class CIRCLEREC_SABER:
 
     def print_results(self):
         for index in self.red_index_array:
-            print('Red detected in ' + self.image_files[index])
+            print('Red detected in ' + self.image_paths[index])
 
         #the indexes stored for images that contain circles are relative to the indexes of images that contain red, 
         # to recover the original file names we have to index the red_index_array from the circle_index_array
         for index in self.circle_index_array:
-            print('Circle detected in ' + self.image_files[self.red_index_array[index]])
+            print('Circle detected in ' + self.image_paths[self.red_index_array[index]])
     """
     name: write_results_to_file
     last edit: 11/22/25
     description:
     dumps the paths to all the images with red circles to a file
     """
-    def _write_results_to_file(self):
-        f = open("results/detected.txt",'w+')
-        for index in self.circle_index_array:
-            f.write(self.image_files[self.red_index_array[index]] + '\n')
+
 
     """
     name: db_full_analysis
@@ -209,7 +195,7 @@ class CIRCLEREC_SABER:
         self._find_circles()
         self.print_results()
         self.plot_circles()
-        self._write_results_to_file()
+
 
     """
     name: analyze   
@@ -223,4 +209,7 @@ class CIRCLEREC_SABER:
         self._mask_red()
         self._bgr_conversion()
         self._find_circles()
-        self._write_results_to_file()
+
+ir = CircleRec_SABER()
+
+ir.analyze()

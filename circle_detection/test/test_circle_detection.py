@@ -1,7 +1,7 @@
-from circle_detection.CIRCLEREC_SABER import CIRCLEREC_SABER
+from circle_detection.CircleRec_SABER import CircleRec_SABER
 
-test_object = CIRCLEREC_SABER()
+test_object = CircleRec_SABER()
 
-test_object.analyze()
+test_object._db_full_analysis()
 
 
