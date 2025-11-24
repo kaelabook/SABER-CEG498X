@@ -1,7 +1,7 @@
 """
 Class: CirlceRec_SABER
 Author: Spencer Mullins
-Version: 1.0.0
+Version: 0.0.1
 Last Change: 11/23/25
 Description:
 Loads in images from a database, determines if any red hue exists in every image,
