@@ -1,7 +1,22 @@
 import yaml
 import sqlite3
 from pathlib import Path
+"""
+Class: Database_SABER
+Author: Spencer Mullins
+Version: 0.0.1
+Last Change: 11/23/25
+Description:
+SQLite database implemented to hold 2 tables config, and images. config holds configuration information loaded in from a yaml file.
+Most of the relevant config information involves paths to other files.
 
+TODO: 
+Update to include other tables, configs, etc as time goes on. 
+Need to update to store absolute paths programmatically for the config table, like in the image table.
+Add docstrings for all methods and general comments.
+Clean up unescesarry repetion.
+
+"""
 INSERT_IMAGE_PATH = "INSERT OR IGNORE INTO images (path) VALUES (?)"
 INSERT_CONFIG = "INSERT OR IGNORE INTO config (type, path) VALUES (?, ?)"
 
@@ -19,7 +34,7 @@ class Database_SABER:
 
         self.db_conn = sqlite3.connect(str(self.db_path))
         self.db_cursor = self.db_conn.cursor()
-
+        self._init_db()
 #Setup and helpers
     def cleanup(self):
         self.db_conn.close()
@@ -53,7 +68,7 @@ class Database_SABER:
         self.db_cursor.execute(insert_command, values_tuple )
 
     def _load_image_paths(self):
-        with open(self.retrieve_path('config', 'image_list'), 'r') as f:
+        with open(self.retrieve_config_path('config', 'image_list'), 'r') as f:
             for line in f:
                 path_tuple = (str(self.project_path / Path(line.strip().replace("\n", ""))),)
                 self._insert_to_db(INSERT_IMAGE_PATH, path_tuple)
@@ -75,12 +90,7 @@ class Database_SABER:
         result = result[2:len(result)-3]
         return result
 
-    def _load_image_paths(self):
-        with open(self.retrieve_path('config','image_list'), 'r') as f:
-            for line in f:
-                path_tuple = (str(self.project_path / Path(line.strip().replace("\n",""))),)
-                self._insert_to_db(INSERT_IMAGE_PATH,path_tuple)
-            self.db_conn.commit()
+
 
 
     def _load_in_config(self):
@@ -110,8 +120,6 @@ class Database_SABER:
             path = self._clean_query(path)
             paths.append(path)
             path = self.db_cursor.fetchone()
-
-
         return paths
 
     #update and add functions

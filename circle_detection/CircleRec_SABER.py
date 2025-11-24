@@ -8,6 +8,8 @@ Loads in images from a database, determines if any red hue exists in every image
 performs a Hough transform on each image containing red hue,
 determines from the Hough transform if the red in an image is a circle,
 updates the database to indicate a true or a false based on the detection results.
+
+TODO: Add a way to save analyzed images programmatically
 """
 import cv2
 import numpy as np
