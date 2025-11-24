@@ -1,9 +1,18 @@
-import matplotlib.pyplot as plt
+"""
+Class: CirlceRec_SABER
+Author: Spencer Mullins
+Version: 1.0.0
+Last Change: 11/23/25
+Description:
+Loads in images from a database, determines if any red hue exists in every image,
+performs a Hough transform on each image containing red hue,
+determines from the Hough transform if the red in an image is a circle,
+updates the database to indicate a true or a false based on the detection results.
+"""
 import cv2
 import numpy as np
-from pathlib import Path
-import os
 from database.Database_SABER import Database_SABER
+
 #Constants
 #HSV Red Spectrum Upper and lower values
 LRED1 = np.array([0,100,100])
@@ -23,54 +32,23 @@ class CircleRec_SABER:
         self.image_paths = None
         self.DB = Database_SABER()
 
-    """    name: load_images
-    last edit: 10/5/2025 SAM
-    description: 
-    loads the test images in, appends them to the image_array class parameter for self use later
-    needed future capability:
-    eventually will need to load in image file names either from an entire directory (mounted flash drive), or a file
-    Update 10/6/2025 - files able to be loaded in from text file
-    """
+
     def  _load_images(self):
+        """Loads images for analysis from DB by retrieving paths, using opencv's imread, and appending them to an object -SAM"""
         self.image_paths=self.DB.retrieve_image_paths()
         for path in self.image_paths:
             self.image_array.append(cv2.imread(path))
 
-    """
-    name: plot_images
-    last edit: 10/5/2025 SAM
-    description: 
-    shows the images loaded in, kind of bad and just used for debugging
-    """
-    """
-    def plot_images(self):
-        for image in self.image_array:
-            
-            cv2.imshow('image', image)
-            cv2.waitKey(0)
-            # Destroy all created windows
-            cv2.destroyAllWindows() """
-    """
 
-    name: hsv_conversion
-    last edit: 10/5/2025 SAM
-    description: 
-    converts the original image files to hsv which represents the image as a hue spectrum instead of its standard RGB value
 
-    """
     def _hsv_conversion(self):
-        #takes the original images and converts them all to hsv format to determine the hue value makeup of the images
+        """Converts images to HSV values using cvtColor, HSV is used for hue analysis -SAM"""
         for image in self.image_array:
             self.hsv_image_array.append(cv2.cvtColor(image,cv2.COLOR_BGR2HSV))
-    """
-    name: mask_red
-    last edit: 10/5/2025 SAM
-    description: 
-    masks all images to only red hues, this will be used to determine if an image should be thrown out or kept for circle detection
-    
-    """
+
     def _mask_red(self):
-        #
+        """Masks for all red hues, if none exist, both red and circle are updated in the DB to be false,
+         if red exists in an image, just red is updated to be true for that image. -SAM"""
         for i,image in enumerate(self.hsv_image_array):
             #create redmask on image list
             mask1 = cv2.inRange(image, LRED1,URED1)
@@ -82,40 +60,20 @@ class CircleRec_SABER:
                 self.masked_image_array.append(red_mask)
                 self.red_index_array.append(i)
                 self.DB.update_red(self.image_paths[i],1)
-                #print('red found in image')
             else:
                 self.DB.update_red(self.image_paths[i],0)
                 self.DB.update_circle(self.image_paths[i], 0)
-    """
-    name: mask_red
-    last edit: 10/5/2025 SAM
-    description: 
-    converts masked images to bgr for further circle detection
-    """
+
     def _bgr_conversion(self):
+        """converts images containing red to BGR format, this is going to be used for circle detection -SAM"""
         for image in self.masked_image_array:
              self.bgr_image_array.append(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
-    """
-    name: show_red_images
-    last edit: 10/5/2025 SAM
-    description: 
-    shows the red masked images used for debugging
-    """
-    """  def show_red_images(self):
-        for image in self.masked_image_array:
-            cv2.imshow('image', image)
-            cv2.waitKey(0)
-            # Destroy all created windows
-            cv2.destroyAllWindows() """
-    """
-    name: find_circles
-    last edit: 10/5/2025 SAM
-    description: 
-    finds circles in the images, detects using cv2s Hough transform, some magic number parameters
-    """
-    
-    def _find_circles(self):
 
+
+    def _find_circles(self):
+        """uses a Hough Transform to detect for circles in the images converted to bgr,
+        also creates circles to place on the image for visual debugging
+        and updates the database to indicate if circles were found or not in the images that had red -SAM"""
         for i, image in enumerate(self.bgr_image_array):
             #convert to grayscale, needed for circle detection
             gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -133,8 +91,7 @@ class CircleRec_SABER:
                 param1=175,         
                 param2=32,       
                 minRadius=10,        
-                maxRadius=300 
-
+                maxRadius=300
             )
             if circles is not None:
                 circles = np.uint16(np.around(circles))
@@ -147,25 +104,18 @@ class CircleRec_SABER:
                     cv2.circle(image,(j[0],j[1]),2,(0,0,255),3)
             else:
                 self.DB.update_circle(self.image_paths[self.red_index_array[i]], hascircle=0)
-    #here for debugging don't use unless you uncomment the 'for i in circles[0,:]:' loop in find_circles(), 
-    # also should not be used at all for production because it edits the original images, might fix this later
+    #DEBGUG METHODS
     def plot_circles(self):
-     
+        """plots the circles on the bgr images, here for visual debugging -SAM"""
         for image in self.bgr_image_array:
             cv2.imshow('image', image)
             cv2.waitKey(0)
             # Destroy all created windows
             cv2.destroyAllWindows()
-    
-    """
-    name: print_results
-    last edit: 10/5/2025 SAM
-    description: 
-    prints resulting red detection and circle detection, mostly used for debug but will eventually be utilized
-    to send to code used for encryption/compression/encoding for transmission
-    """
 
     def print_results(self):
+        """original validation function for initial development,
+        prints results to the console -SAM"""
         for index in self.red_index_array:
             print('Red detected in ' + self.image_paths[index])
 
@@ -173,21 +123,9 @@ class CircleRec_SABER:
         # to recover the original file names we have to index the red_index_array from the circle_index_array
         for index in self.circle_index_array:
             print('Circle detected in ' + self.image_paths[self.red_index_array[index]])
-    """
-    name: write_results_to_file
-    last edit: 11/22/25
-    description:
-    dumps the paths to all the images with red circles to a file
-    """
 
-
-    """
-    name: db_full_analysis
-    last edit: 11/22/25
-    description:
-    debug analysis method, calls all methods in order to perform an analysis, prints and plots images with circles
-     """
-    def _db_full_analysis(self):
+    def _debug_full_analysis(self):
+        """prints everything, plots everything, here to debug"""
         self._load_images()
         self._hsv_conversion()
         self._mask_red()
@@ -195,21 +133,12 @@ class CircleRec_SABER:
         self._find_circles()
         self.print_results()
         self.plot_circles()
-
-
-    """
-    name: analyze   
-    last edit: 11/22/25
-    description:
-    main function for the class, performs all analysis steps, writes passing images to a file
-    """
+    #ENTRYPOINT METHOD
     def analyze(self):
+        """just performs the circle detection and updates the database, doesn't pring or plot -SAM"""
         self._load_images()
         self._hsv_conversion()
         self._mask_red()
         self._bgr_conversion()
         self._find_circles()
 
-ir = CircleRec_SABER()
-
-ir.analyze()
