@@ -32,6 +32,7 @@ class Database_SABER:
         self.conf = yaml.load(open(self.configPath, 'r+'), Loader=FullLoader)
         self.conn = sqlite3.connect(str(self.dbPath))
         self.cursor = self.conn.cursor()
+        self._init_db()
 
     def cleanup(self):
         self.conn.close()
@@ -127,15 +128,22 @@ class Database_SABER:
 
         return configPath
 
-    def retrieveImagePaths(self):
+    def retrieveImageData(self):
         paths=[]
+        names=[]
         self.cursor.execute("SELECT path FROM images")
         path = self.cursor.fetchone()
         while path is not None:
             path = self._cleanQuery(path)
             paths.append(path)
             path = self.cursor.fetchone()
-        return paths
+        self.cursor.execute("SELECT imageName FROM images")
+        name = self.cursor.fetchone()
+        while name is not None:
+            name = self._cleanQuery(name)
+            names.append(name)
+            name = self.cursor.fetchone()
+        return paths,names
 
     #update and add functions
     def setRedVal(self,imName,hasRed):

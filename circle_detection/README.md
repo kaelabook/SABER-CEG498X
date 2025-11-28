@@ -55,10 +55,10 @@ Image output:
 Any attempt to create a seperate analysis function should call all private methods in the following order:
 ```
   def my_custom_analysis(self):
-        self._load_images()
-        self._hsv_conversion()
-        self._mask_red()
-        self._bgr_conversion()
+        self.load_images()
+        self.hsv_conversion()
+        self.mask_red()
+        self.bgr_conversion()
         self._find_circles()
         ...
 ```
