@@ -1,6 +1,11 @@
+from os import major
+
 import yaml
 import sqlite3
 from pathlib import Path
+import re
+from yaml import FullLoader
+
 """
 Class: Database_SABER
 Author: Spencer Mullins
@@ -10,128 +15,164 @@ Description:
 SQLite database implemented to hold 2 tables config, and images. config holds configuration information loaded in from a yaml file.
 Most of the relevant config information involves paths to other files.
 
-TODO: 
-Update to include other tables, configs, etc as time goes on. 
-Need to update to store absolute paths programmatically for the config table, like in the image table.
-Add docstrings for all methods and general comments.
-Clean up unescesarry repetion.
-
 """
-INSERT_IMAGE_PATH = "INSERT OR IGNORE INTO images (path) VALUES (?)"
-INSERT_CONFIG = "INSERT OR IGNORE INTO config (type, path) VALUES (?, ?)"
+
 
 class Database_SABER:
-    def __init__(self):
-        self.db_path = 'saber.db'
+    def __init__(self, dbPath='saber.db'):
+        self.dbPath =dbPath
 
-        self.config_path = Path('conf/saber_config.yaml')
-
-        self.project_path = Path(__file__).resolve().parent
-        self.db_path = self.project_path / self.db_path
-
-        self.config_path = self.project_path / self.config_path
+        self.projectPath = Path(__file__).resolve().parent
+        self.dbPath = self.projectPath / self.dbPath
 
 
-        self.db_conn = sqlite3.connect(str(self.db_path))
-        self.db_cursor = self.db_conn.cursor()
-        self._init_db()
-#Setup and helpers
+
+        self.configPath = Path('conf/saber_config.yaml')
+        self.configPath = self.projectPath / self.configPath
+        self.conf = yaml.load(open(self.configPath, 'r+'), Loader=FullLoader)
+        self.conn = sqlite3.connect(str(self.dbPath))
+        self.cursor = self.conn.cursor()
+
     def cleanup(self):
-        self.db_conn.close()
+        self.conn.close()
 
     def _init_db(self):
-        self._setup_config()
-        self._setup_images()
-        self._load_image_paths()
-        self._load_in_config()
+        self.setupPathConfigTable()
+        self.setupImageTable()
+        self.loadPathConfig()
+        self.loadImagePaths()
 
-    def _setup_config(self):
-        self.db_cursor.execute('''
-        CREATE TABLE IF NOT EXISTS config ( 
+
+    def setupPathConfigTable(self):
+        self.cursor.execute('''
+        CREATE TABLE IF NOT EXISTS pathConfig ( 
             id INTEGER PRIMARY KEY,
             type TEXT UNIQUE,
-            path TEXT NOT NULL
+            path TEXT UNIQUE
             )
             ''')
 
-    def _setup_images(self):
-        self.db_cursor.execute('''
+    def setupImageTable(self):
+        """constructs the table for image data"""
+        self.cursor.execute('''
         CREATE TABLE IF NOT EXISTS images ( 
             id INTEGER PRIMARY KEY,
             path TEXT UNIQUE,
-            red INTEGER,
-            circle INTEGER
+            imageName TEXT UNIQUE,
+            hasRed INTEGER,
+            hasCircle INTEGER
             )
             ''')
+    def makePathAbsolute(self,relativePath):
+        """helper for making paths absolute"""
+        out= str(self.projectPath / Path(relativePath.strip().replace("\n", "")))
+        return out
 
-    def _insert_to_db(self,insert_command, values_tuple, im_path=''):
-        self.db_cursor.execute(insert_command, values_tuple )
+    def loadVal(self,table,col, val):
+        """loads a single row value at associated column"""
+        query = f"INSERT OR IGNORE INTO {table} ({col}) VALUES (?)"
+        self.cursor.execute(query,(val,))
+        self.conn.commit()
 
-    def _load_image_paths(self):
-        with open(self.retrieve_config_path('config', 'image_list'), 'r') as f:
+    def loadTwoVals(self,table, cols: tuple, vals:tuple):
+        """load two columns of two rows with associated values"""
+        query = f"INSERT OR IGNORE INTO {table} {cols} VALUES (?,?)"
+        self.cursor.execute(query,vals)
+        self.conn.commit()
+
+    def _extractFileName(self,path: str):
+        """Pull file name out of relative path in file"""
+        return Path(path.strip().replace("\n", "")).name
+
+    def loadImagePaths(self):
+        """loads all image paths from config value"""
+        file_path = self.getConfigValue('path')
+        cols = ('path','imageName')
+        table = 'images'
+
+        with open(self.projectPath/Path(file_path.strip().replace("'","")), 'r') as f:
             for line in f:
-                path_tuple = (str(self.project_path / Path(line.strip().replace("\n", ""))),)
-                self._insert_to_db(INSERT_IMAGE_PATH, path_tuple)
-            self.db_conn.commit()
-    def reset_db(self):
-        val = input('Are you sure you want to reset the database? (y/n) \n '
-                    'This will drop all tables, only use for testing, do not use in production')
-        if val == 'y' or val == 'Y':
-            drop = "DROP TABLE IF EXISTS "
-            self.db_cursor.execute(drop + 'config')
-            self.db_cursor.execute(drop + 'images')
-            self.db_conn.commit()
-        elif val == 'n' or val == 'N':
-            exit()
-        else:
-            exit()
-    def _clean_query(self,result):
-        result = str(result)
-        result = result[2:len(result)-3]
-        return result
+                vals = (self.makePathAbsolute(line),self._extractFileName(line))
+
+                self.loadTwoVals(table,cols,vals)
+            self.conn.commit()
+
+    def _cleanQuery(self,query):
+        """helper to strip query artifacts from queries, queries come back as strings formated as tuples and sometimes store random quotations"""
+        queryArtifacts = r"[,()\[\]\"]"
+        result = re.sub(queryArtifacts,'',str(query))
+        return result.strip().replace("\'","")
+
+    def loadPathConfig(self):
+        self.loadFromConfig('pathConfig','path', 'type','image_rec','list','type')
+
+
+    def loadFromConfig(self,table,column1, column2,majKey,minKeys1 ,minKeys2):
+            vals = (self.conf[majKey][minKeys1],self.conf[majKey][minKeys2])
+            cols = (column1,column2)
+            self.loadTwoVals(table,cols,vals)
 
 
 
 
-    def _load_in_config(self):
-        f = open(self.config_path, 'r+')
-        conf = yaml.safe_load(f)
-        image_rec_tuple = ('image_list',conf['image_rec']['list'])
-        detection_list_tuple = ('detection_list',conf['image_rec']['output'])
+    def getConfigValue(self, configType):
+        table     = 'pathConfig'
+        checkCol = 'type'
+        reqCol   = 'path'
+        checkVal =  configType
 
-        self._insert_to_db(INSERT_CONFIG, image_rec_tuple)
-        self._insert_to_db(INSERT_CONFIG, detection_list_tuple)
 
-        self.db_conn.commit()
+        configPath = self.getValue(table,checkVal,checkCol,reqCol)
+        configPath = self._cleanQuery(configPath)
 
-    #retreival functions
-    def retrieve_config_path(self,table, config_type):
-
-        self.db_cursor.execute("SELECT path FROM " + table + " WHERE type = '" + config_type + "'")
-        _path = self.db_cursor.fetchall()
-        full_path = self.project_path / Path(self._clean_query(_path))
-        return full_path
+        return configPath
 
     def retrieve_image_paths(self):
         paths=[]
-        self.db_cursor.execute("SELECT path FROM images")
-        path = self.db_cursor.fetchone()
+        self.cursor.execute("SELECT path FROM images")
+        path = self.cursor.fetchone()
         while path is not None:
-            path = self._clean_query(path)
+            path = self._cleanQuery(path)
             paths.append(path)
-            path = self.db_cursor.fetchone()
+            path = self.cursor.fetchone()
         return paths
 
     #update and add functions
-    def update_red(self,im_path,hasred):
-        insert_image_red = f"UPDATE images SET red = {hasred} WHERE path = '{im_path}'"
-        self.db_cursor.execute(insert_image_red)
-        self.db_conn.commit()
-    def update_circle(self, im_path,hascircle):
-        insert_image_circle = f"UPDATE images SET circle = {hascircle} WHERE path = '{im_path}'"
-        self.db_cursor.execute(insert_image_circle)
-        self.db_conn.commit()
+    def setRedVal(self,imName,hasRed):
+        table     = 'images'
+        destCol  = 'hasRed'
+        dest_val  =  hasRed
+        checkCol = 'imageName'
+        checkVal =  imName
 
+        self.setValue(table,destCol,dest_val,checkCol,checkVal)
 
+    def setCircleVal(self, imName,hasCircle):
+        table     = 'images'
+        destCol  = 'hasCircle'
+        dest_val  =  hasCircle
+        checkCol = 'imageName'
+        checkVal =  imName
+
+        self.setValue(table,destCol,dest_val,checkCol,checkVal)
+
+    def setValue(self,table,destCol,destVal,checkCol, checkVal):
+        query =  (
+                 f"UPDATE {table} "
+                 f"SET {destCol} = {destVal} "
+                 f"WHERE {checkCol} = '{checkVal}'"
+                 )
+
+        self.cursor.execute(query)
+        self.conn.commit()
+
+    def getValue(self,table,checkVal,checkCol,reqCol):
+        query =  (
+                 f"SELECT {reqCol} "
+                 f"FROM {table} "
+                 f"WHERE {checkCol} = '{checkVal}'"
+                 )
+        self.cursor.execute(query)
+        return self.cursor.fetchall()
 
 
