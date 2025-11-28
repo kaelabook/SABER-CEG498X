@@ -9,8 +9,8 @@ from yaml import FullLoader
 """
 Class: Database_SABER
 Author: Spencer Mullins
-Version: 0.0.1
-Last Change: 11/23/25
+Version: 0.0.2
+Last Change: 11/28/25
 Description:
 SQLite database implemented to hold 2 tables config, and images. config holds configuration information loaded in from a yaml file.
 Most of the relevant config information involves paths to other files.
@@ -127,7 +127,7 @@ class Database_SABER:
 
         return configPath
 
-    def retrieve_image_paths(self):
+    def retrieveImagePaths(self):
         paths=[]
         self.cursor.execute("SELECT path FROM images")
         path = self.cursor.fetchone()
