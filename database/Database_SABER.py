@@ -1,47 +1,73 @@
-from os import major
+
 
 import yaml
 import sqlite3
 from pathlib import Path
-import re
 from yaml import FullLoader
 
 """
 Class: Database_SABER
 Author: Spencer Mullins
-Version: 0.0.2
-Last Change: 11/28/25
+Version: 0.0.3
+Last Change: 11/29/25
 Description:
 SQLite database implemented to hold 2 tables config, and images. config holds configuration information loaded in from a yaml file.
 Most of the relevant config information involves paths to other files.
-
 """
+
+#static helpers
+def _extractFileName(path: str):
+    """Pull file name out of relative path in file"""
+    return Path(str(path).strip().replace("\n", "")).name
 
 
 class Database_SABER:
-    def __init__(self, dbPath='saber.db'):
-        self.dbPath =dbPath
+    def __init__(self, mode='origin'):
+        self.mode = mode
+        self.dbPath = self.chooseDB()
 
         self.projectPath = Path(__file__).resolve().parent
         self.dbPath = self.projectPath / self.dbPath
-
-
-
         self.configPath = Path('conf/saber_config.yaml')
         self.configPath = self.projectPath / self.configPath
         self.conf = yaml.load(open(self.configPath, 'r+'), Loader=FullLoader)
         self.conn = sqlite3.connect(str(self.dbPath))
         self.cursor = self.conn.cursor()
-        self._init_db()
 
+        self._init_db()
+    # Dynamic Helpers
+    def chooseDB(self):
+        if self.mode == 'origin':
+            return 'saber.db'
+        elif self.mode == 'server':
+            return 'saber-server.db'
+        else:
+            return 'dbTest'
+    def makePathAbsolute(self, relativePath):
+        """helper for making paths absolute"""
+        out = self.projectPath / Path(str(relativePath).strip().replace("\n", ""))
+        return out
+    # Deconstructor
     def cleanup(self):
         self.conn.close()
 
+    # Initializers
     def _init_db(self):
         self.setupPathConfigTable()
-        self.setupImageTable()
         self.loadPathConfig()
-        self.loadImagePaths()
+        if self.mode == 'origin':
+            self.setupOriginImageTable()
+            self.loadImagePaths()
+        elif self.mode == 'server':
+            self.setupServerImageTable()
+        else:
+            raise Exception("invalid mode entered, please use 'origin' or 'server'")
+
+
+
+
+
+
 
 
     def setupPathConfigTable(self):
@@ -53,22 +79,36 @@ class Database_SABER:
             )
             ''')
 
-    def setupImageTable(self):
-        """constructs the table for image data"""
+    def setupServerImageTable(self):
         self.cursor.execute('''
-        CREATE TABLE IF NOT EXISTS images ( 
+        CREATE TABLE IF NOT EXISTS server (
+        id INTEGER PRIMARY KEY,
+        path TEXT UNIQUE,
+        imageName TEXT UNIQUE,
+        serializedImage TEXT UNIQUE, 
+        encryptedImage TEXT UNIQUE,
+        cryptoIV TEXT UNIQUE
+        )
+        ''')
+
+    def setupOriginImageTable(self):
+        """constructs the table for origin data"""
+        self.cursor.execute('''
+        CREATE TABLE IF NOT EXISTS origin( 
             id INTEGER PRIMARY KEY,
             path TEXT UNIQUE,
             imageName TEXT UNIQUE,
             hasRed INTEGER,
-            hasCircle INTEGER
+            hasCircle INTEGER,
+            serializedImage TEXT UNIQUE,
+            encryptedImage TEXT UNIQUE,
+            cryptoIV TEXT UNIQUE,
+            generatedHash TEXT UNIQUE
             )
             ''')
-    def makePathAbsolute(self,relativePath):
-        """helper for making paths absolute"""
-        out= str(self.projectPath / Path(relativePath.strip().replace("\n", "")))
-        return out
 
+
+    # General loaders
     def loadVal(self,table,col, val):
         """loads a single row value at associated column"""
         query = f"INSERT OR IGNORE INTO {table} ({col}) VALUES (?)"
@@ -81,106 +121,76 @@ class Database_SABER:
         self.cursor.execute(query,vals)
         self.conn.commit()
 
-    def _extractFileName(self,path: str):
-        """Pull file name out of relative path in file"""
-        return Path(path.strip().replace("\n", "")).name
+
+
+    def loadFromConfig(self, table, column1, column2, majKey, minKeys1, minKeys2):
+        """parses loaded in yaml, key depth is only 2, major + minor keys"""
+        vals = (str(self.makePathAbsolute(self.conf[majKey][minKeys1])), self.conf[majKey][minKeys2])
+        cols = (column1, column2)
+
+        self.loadTwoVals(table, cols, vals)
+
+
+    # Specific Loaders
+    def loadPathConfig(self):
+        self.loadFromConfig('pathConfig','path', 'type','images_origin','path','type')
+        self.loadFromConfig('pathConfig', 'path', 'type', 'aes_key', 'path', 'type')
+        self.loadFromConfig('pathConfig', 'path', 'type', 'images_server', 'path', 'type')
+
 
     def loadImagePaths(self):
-        """loads all image paths from config value"""
-        file_path = self.getConfigValue('path')
-        cols = ('path','imageName')
-        table = 'images'
-
-        with open(self.projectPath/Path(file_path.strip().replace("'","")), 'r') as f:
+        path = self.getValue('pathConfig','images-origin','type','path')
+        with open(path,'r') as f:
             for line in f:
-                vals = (self.makePathAbsolute(line),self._extractFileName(line))
+                cleanLine = self.makePathAbsolute(line.strip().replace("\n",""))
+                self.loadVal('origin','path',str(cleanLine))
+                self.setValue('origin','imageName',_extractFileName(str(cleanLine)),'path', str(cleanLine))
 
-                self.loadTwoVals(table,cols,vals)
-            self.conn.commit()
-
-    def _cleanQuery(self,query):
-        """helper to strip query artifacts from queries, queries come back as strings formated as tuples and sometimes store random quotations"""
-        queryArtifacts = r"[,()\[\]\"]"
-        result = re.sub(queryArtifacts,'',str(query))
-        return result.strip().replace("\'","")
-
-    def loadPathConfig(self):
-        self.loadFromConfig('pathConfig','path', 'type','image_rec','list','type')
-
-
-    def loadFromConfig(self,table,column1, column2,majKey,minKeys1 ,minKeys2):
-            vals = (self.conf[majKey][minKeys1],self.conf[majKey][minKeys2])
-            cols = (column1,column2)
-            self.loadTwoVals(table,cols,vals)
-
-
-
-
-    def getConfigValue(self, configType):
-        table     = 'pathConfig'
-        checkCol = 'type'
-        reqCol   = 'path'
-        checkVal =  configType
-
-
-        configPath = self.getValue(table,checkVal,checkCol,reqCol)
-        configPath = self._cleanQuery(configPath)
-
-        return configPath
-
-    def retrieveImageData(self):
-        paths=[]
-        names=[]
-        self.cursor.execute("SELECT path FROM images")
-        path = self.cursor.fetchone()
-        while path is not None:
-            path = self._cleanQuery(path)
-            paths.append(path)
-            path = self.cursor.fetchone()
-        self.cursor.execute("SELECT imageName FROM images")
-        name = self.cursor.fetchone()
-        while name is not None:
-            name = self._cleanQuery(name)
-            names.append(name)
-            name = self.cursor.fetchone()
-        return paths,names
-
-    #update and add functions
-    def setRedVal(self,imName,hasRed):
-        table     = 'images'
-        destCol  = 'hasRed'
-        dest_val  =  hasRed
-        checkCol = 'imageName'
-        checkVal =  imName
-
-        self.setValue(table,destCol,dest_val,checkCol,checkVal)
-
-    def setCircleVal(self, imName,hasCircle):
-        table     = 'images'
-        destCol  = 'hasCircle'
-        dest_val  =  hasCircle
-        checkCol = 'imageName'
-        checkVal =  imName
-
-        self.setValue(table,destCol,dest_val,checkCol,checkVal)
-
+    # General Mutators
     def setValue(self,table,destCol,destVal,checkCol, checkVal):
         query =  (
                  f"UPDATE {table} "
-                 f"SET {destCol} = {destVal} "
-                 f"WHERE {checkCol} = '{checkVal}'"
+                 f"SET {destCol} = ? "
+                 f"WHERE {checkCol} = ?"
                  )
 
-        self.cursor.execute(query)
+        self.cursor.execute(query, (destVal,checkVal))
         self.conn.commit()
+
+
+    # General accessors
 
     def getValue(self,table,checkVal,checkCol,reqCol):
         query =  (
                  f"SELECT {reqCol} "
                  f"FROM {table} "
-                 f"WHERE {checkCol} = '{checkVal}'"
+                 f"WHERE {checkCol} = ?"
                  )
-        self.cursor.execute(query)
-        return self.cursor.fetchall()
+        self.cursor.execute(query,(checkVal,))
+        rtn = self.cursor.fetchone()
+        return rtn[0]
 
+    def bulkRetrieval(self,table,col):
+        ids = []
+        vals = []
+        query = f"SELECT id, {col} FROM {table}"
+        self.cursor.execute(query)
+        row = self.cursor.fetchone()
+        while row is not None:
+            ids.append(row[0])
+            vals.append(row[1])
+            row = self.cursor.fetchone()
+        return vals,ids
+
+    def conditionalBulkRetrieval(self,table,col,checkCol,checkVal):
+        ids = []
+        vals = []
+        query = f"SELECT id, {col} FROM {table} WHERE {checkCol} = ?"
+        self.cursor.execute(query,(checkVal,))
+        row = self.cursor.fetchone()
+        while row is not None:
+            ids.append(row[0])
+            vals.append(row[1])
+            row = self.cursor.fetchone()
+        return vals,ids
 

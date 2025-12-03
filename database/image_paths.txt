@@ -1,10 +1,5 @@
-images/image9.png
-images/image13.png
 images/image35.png
-images/red_circle.jpeg
+images/image13.png
 images/ferrari.png
-images/image_non.png
-images/wsu.png
-images/onions.jpeg
-images/oopsallberries.png
-images/tire.PNG
+images/image9.png
+images/red_circle.jpeg
