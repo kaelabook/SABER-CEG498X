@@ -12,7 +12,7 @@ updates the database to indicate a true or a false based on the detection result
 import cv2
 import numpy as np
 from database.Database_SABER import Database_SABER
-
+import time
 #Constants
 #HSV Red Spectrum Upper and lower values
 
@@ -20,6 +20,10 @@ LRED1 = np.array([0,100,100])
 URED1 = np.array([10,255,255])
 LRED2 = np.array([160,100,100])
 URED2 = np.array([180,255,255])
+
+
+
+
 
 class CircleRec_SABER:
     def __init__(self):
@@ -35,12 +39,31 @@ class CircleRec_SABER:
         self.minDist = 100
         self.param1 = 175
         self.param2 = 32
-        self.minRadius = 10
-        self.maxRadius = 300
+        self.minRadius = 0
+        self.maxRadius = 0
         #config values
         self.imagePaths = None
         self.DB = Database_SABER()
 
+    def warmupHough(self):
+        # warm up common sizes (add any others you use)
+        sizes = [(1024, 1024), (768, 1349), (720, 1280)]
+
+        for w, h in sizes:
+            dummy = np.zeros((w, h), dtype=np.uint8)
+            # run median blur and Hough once
+            dummy_blur = cv2.medianBlur(dummy, 5)
+
+            cv2.HoughCircles(
+                dummy_blur,
+                cv2.HOUGH_GRADIENT,
+                dp=self.dp,
+                minDist=self.minDist,
+                param1=self.param1,
+                param2=self.param2,
+                minRadius=self.minRadius,
+                maxRadius=self.maxRadius
+            )
     def __del__(self):
         self.DB.cleanup()
     def  loadImages(self):
@@ -65,6 +88,7 @@ class CircleRec_SABER:
             mask2 = cv2.inRange(image, LRED2, URED2)
 
             red_mask = mask1 + mask2
+
             #if the current redmask is >0 add the images index in the previous array to filter to images with only red
             if cv2.countNonZero(red_mask) > 0:
                 self.imageArrayRedMasked.append(image)
@@ -78,11 +102,7 @@ class CircleRec_SABER:
         """converts images containing red to BGR format, this is going to be used for circle detection -SAM"""
         for image in self.imageArrayRedMasked:
              self.imageArrayBGR.append(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
-        for image in self.imageArrayBGR:
-            cv2.imshow('image', image)
-            cv2.waitKey(0)
-            # Destroy all created windows
-            cv2.destroyAllWindows()
+
 
 
 
@@ -90,24 +110,25 @@ class CircleRec_SABER:
         """uses a Hough Transform to detect for circles in the images converted to bgr,
         also creates circles to place on the image for visual debugging
         and updates the database to indicate if circles were found or not in the images that had red -SAM"""
+        cv2.setUseOptimized(True)
+
         for i, image in enumerate(self.imageArrayBGR):
+
 
             #convert to grayscale, needed for circle detection
             grayImage = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-            grayImage = cv2.medianBlur(grayImage, 5)
 
-            #these values were mostly found through guess and check, 
+            grayImage = cv2.medianBlur(grayImage, 5)
+            resized = cv2.resize(grayImage, (360, 360), interpolation=cv2.INTER_AREA)
+
+            #these values were mostly found through guess and check,
             #the variable that seems to have the most effect on false alarm is param2,
             #too high it won't detect anything, too low it detects too much, 32 is the sweet spot for at least the test images that have been used
 
-            cv2.imshow('image', grayImage)
-            cv2.waitKey(0)
-            # Destroy all created windows
-            cv2.destroyAllWindows()
-
+            t = time.time()
             circles = cv2.HoughCircles(
-                grayImage,
+                resized,
                 cv2.HOUGH_GRADIENT,
                 dp=self.dp,
                 minDist=self.minDist,
@@ -118,9 +139,10 @@ class CircleRec_SABER:
             )
 
 
-
             if circles is not None:
+
                 self.DB.setValue('origin','hasCircle',1,'id',self.redIDs[i])
+
                 self.circleIDs.append(self.redIDs[i])
                 #circles = np.uint16(np.around(circles))
 
@@ -130,8 +152,12 @@ class CircleRec_SABER:
                 #     cv2.circle(currentOrig,(j[0],j[1]),j[2],(0,255,0),2)
                 #         # draw the center of the circle
                 #     cv2.circle(currentOrig,(j[0],j[1]),2,(0,0,255),3)
+
             else:
+
                 self.DB.setValue('origin','hasCircle', 0, 'id', self.redIDs[i])
+
+
     #DEBGUG METHODS
     def plotCircles(self):
         """plots the circles on the bgr images, here for visual debugging -SAM"""

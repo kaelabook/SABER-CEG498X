@@ -9,9 +9,11 @@ A class to encrypt and decrypt serialized data
 """
 import base64
 
+
 from database.Database_SABER import Database_SABER
 
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+from Crypto.Cipher import AES
 import os
 
 
@@ -24,7 +26,8 @@ class Crypto_SABER:
         self.DB = Database_SABER(mode)
         self.cipherText = []
         self.image_ids = []
-        self.ivs = None
+        self.tags = None
+        self.nonces = None
         self.keyFilePath = self.DB.getValue('pathConfig','AESKey','type','path')
         self.key = None
         self.encryptedData = None
@@ -46,35 +49,44 @@ class Crypto_SABER:
 
     def getEncryptedData(self):
         self.encryptedData, self.image_ids = self.DB.bulkRetrieval('server','encryptedImage')
-        self.ivs, self.image_ids = self.DB.bulkRetrieval('server','cryptoIV')
+        self.nonces, self.image_ids = self.DB.bulkRetrieval('server','nonce')
+        self.tags, self.image_ids = self.DB.bulkRetrieval('server','tag')
+
 
     def encrypt(self,data):
         self.getKey()
         data = base64.b64decode(data)
-        iv = os.urandom(16)
-        cipher = Cipher(algorithms.AES(self.key),modes.CTR(iv))
-        encryptor = cipher.encryptor()
-        ciphertext = encryptor.update(data) + encryptor.finalize()
+        cipher = AES.new(self.key,AES.MODE_EAX)
+        nonce = cipher.nonce
+        ciphertext, tag = cipher.encrypt_and_digest(data)
+        print(f"Data last 10: {str(ciphertext[len(ciphertext)-20:len(ciphertext)-10])}")
+        print(f"Tag {tag}")
+        return ciphertext,nonce,tag
 
-        return ciphertext,iv
-
-    def decrypt(self,text,iv):
+    def decrypt(self,ciphertext,nonce, tag):
         self.getKey()
-        cipher = Cipher(algorithms.AES(self.key), modes.CTR(iv))
-        decryptor = cipher.decryptor()
-        data = decryptor.update(text) + decryptor.finalize()
-        data = base64.b64encode(data)
-        return data
+        cipher = AES.new(self.key,AES.MODE_EAX, nonce = nonce)
+        plaintext = cipher.decrypt(ciphertext)
+        print(f"Data last 10: {str(ciphertext[len(ciphertext)-20:len(ciphertext)-10])}")
+        print(f"Tag: {tag}")
+        try:
+            cipher.verify(tag)
+            print("Authenticated")
+        except ValueError:
+            print("Decryption Failed")
+
+        return plaintext
 
     def encryptAll(self):
         for i, data in enumerate(self.serializedData):
-            cipher, iv = self.encrypt(data)
+            cipher, nonce, tag = self.encrypt(data)
             self.DB.setValue('origin','encryptedImage',cipher,'id',self.image_ids[i])
-            self.DB.setValue('origin', 'cryptoIV', iv, 'id', self.image_ids[i])
+            self.DB.setValue('origin', 'nonce', nonce, 'id', self.image_ids[i])
+            self.DB.setValue('origin','tag', tag, 'id',self.image_ids[i])
 
     def decryptAll(self):
         for i, cipher in enumerate(self.encryptedData):
-            data = self.decrypt(cipher,self.ivs[i])
+            data = self.decrypt(cipher,self.DB.getValue('server',self.image_ids[i],'id','nonce'),self.DB.getValue('server',self.image_ids[i],'id','tag'))
             self.DB.setValue('server','serializedImage',data,'id',self.image_ids[i])
 
     def main(self):

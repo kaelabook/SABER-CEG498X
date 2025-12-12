@@ -1,5 +1,0 @@
-images/image35.png
-images/image13.png
-images/ferrari.png
-images/image9.png
-images/red_circle.jpeg

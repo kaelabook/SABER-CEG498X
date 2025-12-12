@@ -12,7 +12,10 @@ from database.Database_SABER import Database_SABER
 
 class DataConditioner_SABER:
     def __init__(self,mode):
-        self.DB = Database_SABER(mode=mode)
+        if mode == 'debug':
+            self.DB= Database_SABER(mode = 'origin')
+        else:
+            self.DB = Database_SABER(mode=mode)
         self.files = []
         self.serializedData = []
         self.mode = mode
@@ -29,14 +32,17 @@ class DataConditioner_SABER:
         """loads in filepaths and ids"""
         self.files,self.ids = self.DB.conditionalBulkRetrieval('origin','path','hasCircle',1)
 
-    def loadDecrypted(self):
-        self.decryptedData,self.ids = self.DB.bulkRetrieval('server','serializedImage')
+    def loadDecrypted(self,table='server'):
+        if table != 'server':
+            self.decryptedData,self.ids = self.DB.conditionalBulkRetrieval(table, 'serializedImage','hasCircle',1)
+        else:
+            self.decryptedData,self.ids = self.DB.bulkRetrieval(table,'serializedImage')
 
 
     def serialize(self):
         for i,filePath in enumerate(self.files):
             with open(filePath,'rb') as f:
-                self.DB.setValue('origin','serializedImage',base64.b64encode(f.read()).decode('utf-8'),'id',self.ids[i])
+                self.DB.setValue('origin','serializedImage',base64.b64encode(f.read()),'id',self.ids[i])
 
 
 
@@ -48,7 +54,9 @@ class DataConditioner_SABER:
             decodedBytes = base64.b64decode(data)
             with open(outputPath, "wb") as outputFile:
                 outputFile.write(decodedBytes)
-            self.DB.setValue('server','path',outputPath,'id',self.ids[i])
+                outputFile.close()
+            if self.mode == 'server':
+                self.DB.setValue('server','path',str(outputPath),'id',self.ids[i])
     def main(self):
         if self.mode == 'origin':
             self.loadFilePaths()
@@ -58,3 +66,8 @@ class DataConditioner_SABER:
             self.loadDecrypted()
             self.deserialize()
             self.__del__()
+        elif self.mode == 'debug':
+            self.loadFilePaths()
+            self.serialize()
+            self.loadDecrypted('origin')
+            self.deserialize()

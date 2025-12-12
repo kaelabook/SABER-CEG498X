@@ -1,5 +1,5 @@
 images_origin:
-  path: 'image_paths.txt'
+  path: 'images/'
   type: 'images-origin'
 aes_key:
   path: 'conf/keys/AES256_urandKey.key'

@@ -4,7 +4,7 @@ import yaml
 import sqlite3
 from pathlib import Path
 from yaml import FullLoader
-
+import os
 """
 Class: Database_SABER
 Author: Spencer Mullins
@@ -20,6 +20,24 @@ def _extractFileName(path: str):
     """Pull file name out of relative path in file"""
     return Path(str(path).strip().replace("\n", "")).name
 
+
+def getFileNames(directory_path):
+
+    file_names = []
+    try:
+        # Get a list of all entries in the directory
+        all_entries = os.listdir(directory_path)
+
+        # Iterate through each entry and check if it's a file
+        for entry in all_entries:
+            full_path = os.path.join(directory_path, entry)
+            if os.path.isfile(full_path):
+                file_names.append(entry)
+    except FileNotFoundError:
+        print(f"Error: Directory not found at '{directory_path}'")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+    return file_names
 
 class Database_SABER:
     def __init__(self, mode='origin'):
@@ -87,7 +105,9 @@ class Database_SABER:
         imageName TEXT UNIQUE,
         serializedImage TEXT UNIQUE, 
         encryptedImage TEXT UNIQUE,
-        cryptoIV TEXT UNIQUE
+        nonce TEXT UNIQUE,
+        tag TEXT UNIQUE,
+        receivedHash TEXT UNIQUE
         )
         ''')
 
@@ -102,7 +122,8 @@ class Database_SABER:
             hasCircle INTEGER,
             serializedImage TEXT UNIQUE,
             encryptedImage TEXT UNIQUE,
-            cryptoIV TEXT UNIQUE,
+            nonce TEXT UNIQUE,
+            tag TEXT UNIQUE,
             generatedHash TEXT UNIQUE
             )
             ''')
@@ -121,7 +142,16 @@ class Database_SABER:
         self.cursor.execute(query,vals)
         self.conn.commit()
 
-
+    def loadThreeValues(self,table, cols: tuple, vals:tuple):
+        """load two columns of two rows with associated values"""
+        query = f"INSERT OR IGNORE INTO {table} {cols} VALUES (?,?,?)"
+        self.cursor.execute(query,vals)
+        self.conn.commit()
+    def loadFourValues(self,table, cols: tuple, vals:tuple):
+        """load two columns of two rows with associated values"""
+        query = f"INSERT OR IGNORE INTO {table} {cols} VALUES (?,?,?,?)"
+        self.cursor.execute(query,vals)
+        self.conn.commit()
 
     def loadFromConfig(self, table, column1, column2, majKey, minKeys1, minKeys2):
         """parses loaded in yaml, key depth is only 2, major + minor keys"""
@@ -140,11 +170,11 @@ class Database_SABER:
 
     def loadImagePaths(self):
         path = self.getValue('pathConfig','images-origin','type','path')
-        with open(path,'r') as f:
-            for line in f:
-                cleanLine = self.makePathAbsolute(line.strip().replace("\n",""))
-                self.loadVal('origin','path',str(cleanLine))
-                self.setValue('origin','imageName',_extractFileName(str(cleanLine)),'path', str(cleanLine))
+        path = self.makePathAbsolute(path)
+        images = getFileNames(path)
+        for image in images:
+            pathIm = str(path / Path(image))
+            self.loadTwoVals('origin',('imageName','path'),(image,pathIm))
 
     # General Mutators
     def setValue(self,table,destCol,destVal,checkCol, checkVal):
