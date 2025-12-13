@@ -12,7 +12,7 @@ import base64
 
 from database.Database_SABER import Database_SABER
 
-from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+
 from Crypto.Cipher import AES
 import os
 
@@ -37,7 +37,7 @@ class Crypto_SABER:
 
     def generateNewKey(self):
         key = os.urandom(32)
-        with open(self.keyFilePath,'wb') as f:
+        with open(self.keyFilePath,'wb+') as f:
             f.write(key)
 
     def getKey(self):
@@ -48,19 +48,21 @@ class Crypto_SABER:
         self.serializedData, self.image_ids = self.DB.conditionalBulkRetrieval('origin','serializedImage','hasCircle',1)
 
     def getEncryptedData(self):
-        self.encryptedData, self.image_ids = self.DB.bulkRetrieval('server','encryptedImage')
-        self.nonces, self.image_ids = self.DB.bulkRetrieval('server','nonce')
-        self.tags, self.image_ids = self.DB.bulkRetrieval('server','tag')
+        self.DB.cursor.execute("SELECT id, encryptedImage,nonce,tag FROM server ORDER BY id")
+        vals = self.DB.cursor.fetchall()
+        self.image_ids = [row[0] for row in vals]
+        self.encryptedData = [row[1] for row in vals]
+        self.nonces = [row[2] for row in vals]
+        self.tags = [row[3] for row in vals]
 
 
     def encrypt(self,data):
         self.getKey()
-        data = base64.b64decode(data)
+
         cipher = AES.new(self.key,AES.MODE_EAX)
         nonce = cipher.nonce
         ciphertext, tag = cipher.encrypt_and_digest(data)
-        print(f"Data last 10: {str(ciphertext[len(ciphertext)-20:len(ciphertext)-10])}")
-        print(f"Tag {tag}")
+
         return ciphertext,nonce,tag
 
     def decrypt(self,ciphertext,nonce, tag):

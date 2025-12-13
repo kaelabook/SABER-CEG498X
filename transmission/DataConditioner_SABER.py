@@ -51,9 +51,9 @@ class DataConditioner_SABER:
         for i,data in enumerate(self.decryptedData):
             nameStr = f"image{i}.png"
             outputPath = self.rxImagePath / Path(nameStr)
-            decodedBytes = base64.b64decode(data)
+            decoded = base64.b64decode(data)
             with open(outputPath, "wb") as outputFile:
-                outputFile.write(decodedBytes)
+                outputFile.write(decoded)
                 outputFile.close()
             if self.mode == 'server':
                 self.DB.setValue('server','path',str(outputPath),'id',self.ids[i])

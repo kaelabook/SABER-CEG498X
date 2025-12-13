@@ -24,8 +24,9 @@ if __name__ == "__main__":
 
     detect.warmupHough()
     detect.main()
-
+    
     og_conditioner.main()
+    og_crypto.generateNewKey()
     og_crypto.main()
 
     transmission.txHandler_SABER.main()

@@ -40,7 +40,7 @@ def getFileNames(directory_path):
     return file_names
 
 class Database_SABER:
-    def __init__(self, mode='origin'):
+    def __init__(self, mode='origin', *, read_only: bool = False, init_db: bool = True, load_data: bool = True):
         self.mode = mode
         self.dbPath = self.chooseDB()
 
@@ -49,10 +49,18 @@ class Database_SABER:
         self.configPath = Path('conf/saber_config.yaml')
         self.configPath = self.projectPath / self.configPath
         self.conf = yaml.load(open(self.configPath, 'r+'), Loader=FullLoader)
-        self.conn = sqlite3.connect(str(self.dbPath))
+
+        if read_only:
+            uri = f"file:{self.dbPath}?mode=ro"
+            self.conn = sqlite3.connect(uri, uri=True)
+        else:
+            self.conn = sqlite3.connect(str(self.dbPath))
+
         self.cursor = self.conn.cursor()
 
-        self._init_db()
+        if init_db:
+            self._init_db(load_data=load_data)
+
     # Dynamic Helpers
     def chooseDB(self):
         if self.mode == 'origin':
@@ -70,23 +78,19 @@ class Database_SABER:
         self.conn.close()
 
     # Initializers
-    def _init_db(self):
+    def _init_db(self, load_data: bool = True):
         self.setupPathConfigTable()
-        self.loadPathConfig()
-        if self.mode == 'origin':
-            self.setupOriginImageTable()
-            self.loadImagePaths()
-        elif self.mode == 'server':
-            self.setupServerImageTable()
-        else:
-            raise Exception("invalid mode entered, please use 'origin' or 'server'")
+        if load_data:
+            self.loadPathConfig()
 
-
-
-
-
-
-
+            if self.mode == 'origin':
+                self.setupOriginImageTable()
+                if load_data:
+                    self.loadImagePaths()
+            elif self.mode == 'server':
+                self.setupServerImageTable()
+            else:
+                raise Exception("invalid mode entered, please use 'origin' or 'server'")
 
     def setupPathConfigTable(self):
         self.cursor.execute('''
@@ -195,6 +199,7 @@ class Database_SABER:
                  f"SELECT {reqCol} "
                  f"FROM {table} "
                  f"WHERE {checkCol} = ?"
+                 f"ORDER BY id"
                  )
         self.cursor.execute(query,(checkVal,))
         rtn = self.cursor.fetchone()
@@ -203,7 +208,7 @@ class Database_SABER:
     def bulkRetrieval(self,table,col):
         ids = []
         vals = []
-        query = f"SELECT id, {col} FROM {table}"
+        query = f"SELECT id, {col} FROM {table} ORDER BY id"
         self.cursor.execute(query)
         row = self.cursor.fetchone()
         while row is not None:
@@ -215,7 +220,7 @@ class Database_SABER:
     def conditionalBulkRetrieval(self,table,col,checkCol,checkVal):
         ids = []
         vals = []
-        query = f"SELECT id, {col} FROM {table} WHERE {checkCol} = ?"
+        query = f"SELECT id, {col} FROM {table} WHERE {checkCol} = ? ORDER BY id"
         self.cursor.execute(query,(checkVal,))
         row = self.cursor.fetchone()
         while row is not None:
