@@ -1,3 +1,9 @@
-image_rec:
-  list: 'image_paths.txt'
-  type: 'path'
+images_origin:
+  path: 'images/'
+  type: 'images-origin'
+aes_key:
+  path: 'conf/keys/AES256_urandKey.key'
+  type: 'AESKey'
+images_server:
+  path: 'images/received'
+  type: 'images-server'

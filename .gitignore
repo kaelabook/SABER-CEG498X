@@ -1,1 +1,3 @@
 /circle_detection/test/results/detected.txt
+/database/conf/keys/id_aes256
+/database/conf/keys/id_aes256.pub
