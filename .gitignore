@@ -1,3 +1,7 @@
-/circle_detection/test/results/detected.txt
-/database/conf/keys/id_aes256
-/database/conf/keys/id_aes256.pub
+/Circle_detection/test/results/detected.txt
+/Database/conf/keys/id_aes256
+/Database/conf/keys/id_aes256.pub
+.venv/*
+*__pycache__
+*.pyc
+*.db

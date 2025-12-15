@@ -1,0 +1,1236 @@
+12/14/2025 01:43:49 PM INFO:
+     _______.     ___      .______    _______ .______      
+    /       |    /   \     |   _  \  |   ____||   _  \     
+   |   (----`   /  ^  \    |  |_)  | |  |__   |  |_)  |    
+    \   \      /  /_\  \   |   _  <  |   __|  |      /     
+.----)   |    /  _____  \  |  |_)  | |  |____ |  |\  \----.
+|_______/    /__/     \__\ |______/  |_______|| _| `._____|
+                                                           
+12/14/2025 01:43:49 PM INFO:************************************************************
+12/14/2025 01:43:49 PM INFO:============================================================
+12/14/2025 01:43:49 PM INFO:SABER demonstration has begun
+12/14/2025 01:43:49 PM INFO:============================================================
+12/14/2025 01:43:49 PM INFO:Begin circle detection
+12/14/2025 01:43:49 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image13.png
+12/14/2025 01:43:49 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image_non.png
+12/14/2025 01:43:50 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image35.png
+12/14/2025 01:43:50 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image9.png
+12/14/2025 01:43:50 PM INFO: Function convertHSV: Image converted to HSV on iteration 0.
+12/14/2025 01:43:50 PM INFO: Function convertHSV: Image converted to HSV on iteration 1.
+12/14/2025 01:43:50 PM INFO: Function convertHSV: Image converted to HSV on iteration 2.
+12/14/2025 01:43:50 PM INFO: Function convertHSV: Image converted to HSV on iteration 3.
+12/14/2025 01:43:50 PM INFO: Function maskRed: Image contained red on iteration 0.
+12/14/2025 01:43:50 PM INFO: Function maskRed: Image on iteration 1 did not contain red.
+12/14/2025 01:43:50 PM INFO: Function maskRed: Image contained red on iteration 2.
+12/14/2025 01:43:50 PM INFO: Function maskRed: Image contained red on iteration 3.
+12/14/2025 01:43:50 PM INFO: Function convertBGR: Image converted to BGR on iteration 0
+12/14/2025 01:43:50 PM INFO: Function convertBGR: Image converted to BGR on iteration 1
+12/14/2025 01:43:50 PM INFO: Function convertBGR: Image converted to BGR on iteration 2
+12/14/2025 01:43:53 PM INFO: Function findCircles: Circle detected in image on iteration 0.
+12/14/2025 01:43:53 PM DEBUG: Function findCircles: Single loop execution took 2.7804079055786133 seconds for index 0.
+12/14/2025 01:43:53 PM INFO: Function findCircles: Circle detected in image on iteration 1.
+12/14/2025 01:43:53 PM DEBUG: Function findCircles: Single loop execution took 0.13819670677185059 seconds for index 1.
+12/14/2025 01:43:55 PM INFO: Function findCircles: Circle detected in image on iteration 2.
+12/14/2025 01:43:55 PM DEBUG: Function findCircles: Single loop execution took 1.7610423564910889 seconds for index 2.
+12/14/2025 01:43:55 PM DEBUG: Function findCircles: Full execution took 4.680630445480347 seconds.
+12/14/2025 01:43:55 PM INFO:Circle detection has completed successfully
+12/14/2025 01:43:55 PM INFO:============================================================
+12/14/2025 01:43:55 PM INFO:Serialization has begun
+12/14/2025 01:43:55 PM INFO:Function serialize: Image at index 0 serialized.
+12/14/2025 01:43:55 PM INFO:Function serialize: Image at index 1 serialized.
+12/14/2025 01:43:55 PM INFO:Function serialize: Image at index 2 serialized.
+12/14/2025 01:43:55 PM INFO:Serialization has completed successfully
+12/14/2025 01:43:55 PM INFO:============================================================
+12/14/2025 01:43:55 PM INFO:Encryption has begun
+12/14/2025 01:44:02 PM INFO:Encryption has completed successfully
+12/14/2025 01:44:02 PM INFO:============================================================
+12/14/2025 01:44:02 PM INFO:Dummy transmission has begun
+12/14/2025 01:44:02 PM INFO:Function main:  Image loaded to target DB with hash 141316ef1834ec8a449498118c05000cee592f586fa6427feb3f5d2b655c00bb 
+12/14/2025 01:44:03 PM INFO:Function main:  Image loaded to target DB with hash 626974f5aca56f28a64c08a97f8ed4a61b46f6452f2ed7cd2efff080102b93a6 
+12/14/2025 01:44:03 PM INFO:Function main:  Image loaded to target DB with hash 5be18abbeb50410450bcb18acb2e25d13778196cf15271e835770aceb22f9e80 
+12/14/2025 01:44:03 PM INFO: Function main: Received hash sha256@141316ef1834ec8a449498118c05000cee592f586fa6427feb3f5d2b655c00bb is equal to generated hash sha256@141316ef1834ec8a449498118c05000cee592f586fa6427feb3f5d2b655c00bb
+12/14/2025 01:44:03 PM INFO: Function main: Received hash sha256@626974f5aca56f28a64c08a97f8ed4a61b46f6452f2ed7cd2efff080102b93a6 is equal to generated hash sha256@626974f5aca56f28a64c08a97f8ed4a61b46f6452f2ed7cd2efff080102b93a6
+12/14/2025 01:44:03 PM INFO: Function main: Received hash sha256@5be18abbeb50410450bcb18acb2e25d13778196cf15271e835770aceb22f9e80 is equal to generated hash sha256@5be18abbeb50410450bcb18acb2e25d13778196cf15271e835770aceb22f9e80
+12/14/2025 01:44:03 PM INFO:Dummy transmission has completed successfully
+12/14/2025 01:44:03 PM INFO:============================================================
+12/14/2025 01:44:03 PM INFO:Decrypytion has begun
+12/14/2025 01:44:03 PM INFO: Function decrypt: Decrpytion successful for image containing tag b"]\xbf\xb9\xd9,<a\xcb\xb9''g[\x8a'6"
+12/14/2025 01:44:04 PM INFO: Function decrypt: Decrpytion successful for image containing tag b'\x0b|\n\x13k\x9fpB\x80\xf1\xd4\x93<\xe9\x84\x98'
+12/14/2025 01:44:06 PM INFO: Function decrypt: Decrpytion successful for image containing tag b'\xd1\x1e\x91\xe9)\xa5\xb8\xff\xf7\xbe\xa3c\x8f\\\xd3\xd7'
+12/14/2025 01:44:06 PM INFO:Decryption has completed successfully
+12/14/2025 01:44:06 PM INFO:============================================================
+12/14/2025 01:44:06 PM INFO:Deserialization has begun
+12/14/2025 01:44:06 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image0.png.
+12/14/2025 01:44:07 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image1.png.
+12/14/2025 01:44:08 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image2.png.
+12/14/2025 01:44:08 PM INFO:Deserialization has completed successfully
+12/14/2025 01:44:08 PM INFO:============================================================
+12/14/2025 01:44:08 PM INFO:Progam has completed without error, plans can now be served to the galaxy
+12/14/2025 01:44:08 PM INFO:************************************************************
+12/14/2025 01:45:52 PM INFO:
+     _______.     ___      .______    _______ .______      
+    /       |    /   \     |   _  \  |   ____||   _  \     
+   |   (----`   /  ^  \    |  |_)  | |  |__   |  |_)  |    
+    \   \      /  /_\  \   |   _  <  |   __|  |      /     
+.----)   |    /  _____  \  |  |_)  | |  |____ |  |\  \----.
+|_______/    /__/     \__\ |______/  |_______|| _| `._____|
+                                                           
+12/14/2025 01:45:52 PM INFO:************************************************************
+12/14/2025 01:45:52 PM INFO:============================================================
+12/14/2025 01:45:52 PM INFO:SABER demonstration has begun
+12/14/2025 01:45:52 PM INFO:============================================================
+12/14/2025 01:45:52 PM INFO:Begin circle detection
+12/14/2025 01:45:52 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image13.png
+12/14/2025 01:45:52 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image_non.png
+12/14/2025 01:45:52 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image35.png
+12/14/2025 01:45:52 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image9.png
+12/14/2025 01:45:52 PM INFO: Function convertHSV: Image converted to HSV on iteration 0.
+12/14/2025 01:45:52 PM INFO: Function convertHSV: Image converted to HSV on iteration 1.
+12/14/2025 01:45:52 PM INFO: Function convertHSV: Image converted to HSV on iteration 2.
+12/14/2025 01:45:52 PM INFO: Function convertHSV: Image converted to HSV on iteration 3.
+12/14/2025 01:45:52 PM INFO: Function maskRed: Image contained red on iteration 0.
+12/14/2025 01:45:53 PM INFO: Function maskRed: Image on iteration 1 did not contain red.
+12/14/2025 01:45:53 PM INFO: Function maskRed: Image contained red on iteration 2.
+12/14/2025 01:45:53 PM INFO: Function maskRed: Image contained red on iteration 3.
+12/14/2025 01:45:53 PM INFO: Function convertBGR: Image converted to BGR on iteration 0
+12/14/2025 01:45:53 PM INFO: Function convertBGR: Image converted to BGR on iteration 1
+12/14/2025 01:45:53 PM INFO: Function convertBGR: Image converted to BGR on iteration 2
+12/14/2025 01:45:55 PM INFO: Function findCircles: Circle detected in image on iteration 0.
+12/14/2025 01:45:55 PM DEBUG: Function findCircles: Single loop execution took 2.7847847938537598 seconds for index 0.
+12/14/2025 01:45:56 PM INFO: Function findCircles: Circle detected in image on iteration 1.
+12/14/2025 01:45:56 PM DEBUG: Function findCircles: Single loop execution took 0.13661980628967285 seconds for index 1.
+12/14/2025 01:45:57 PM INFO: Function findCircles: Circle detected in image on iteration 2.
+12/14/2025 01:45:57 PM DEBUG: Function findCircles: Single loop execution took 1.8074448108673096 seconds for index 2.
+12/14/2025 01:45:57 PM DEBUG: Function findCircles: Full execution took 4.730074644088745 seconds.
+12/14/2025 01:45:57 PM INFO:Circle detection has completed successfully
+12/14/2025 01:45:57 PM INFO:============================================================
+12/14/2025 01:45:57 PM INFO:Serialization has begun
+12/14/2025 01:45:58 PM INFO:Function serialize: Image at index 0 serialized.
+12/14/2025 01:45:59 PM INFO:Function serialize: Image at index 1 serialized.
+12/14/2025 01:45:59 PM INFO:Function serialize: Image at index 2 serialized.
+12/14/2025 01:45:59 PM INFO:Serialization has completed successfully
+12/14/2025 01:45:59 PM INFO:============================================================
+12/14/2025 01:45:59 PM INFO:Encryption has begun
+12/14/2025 01:46:06 PM INFO:Encryption has completed successfully
+12/14/2025 01:46:06 PM INFO:============================================================
+12/14/2025 01:46:06 PM INFO:Dummy transmission has begun
+12/14/2025 01:46:07 PM INFO:Function main:  Image loaded to target DB with hash f43585aa9e8efa75569868ab671e8ef495123e49e6df89ee78719f34cb8f9765 
+12/14/2025 01:46:07 PM INFO:Function main:  Image loaded to target DB with hash 5702e7a9d3da51b7a7d10900f09eb7e025a9b98aabf5e9cea66dcddfedcafad3 
+12/14/2025 01:46:08 PM INFO:Function main:  Image loaded to target DB with hash eb1586f6a23f816347e9ac80fd9870af27be856a425a2367a9967391c34ec931 
+12/14/2025 01:46:08 PM INFO: Function main: Received hash sha256@f43585aa9e8efa75569868ab671e8ef495123e49e6df89ee78719f34cb8f9765 is equal to generated hash sha256@f43585aa9e8efa75569868ab671e8ef495123e49e6df89ee78719f34cb8f9765
+12/14/2025 01:46:09 PM INFO: Function main: Received hash sha256@5702e7a9d3da51b7a7d10900f09eb7e025a9b98aabf5e9cea66dcddfedcafad3 is equal to generated hash sha256@5702e7a9d3da51b7a7d10900f09eb7e025a9b98aabf5e9cea66dcddfedcafad3
+12/14/2025 01:46:09 PM INFO: Function main: Received hash sha256@eb1586f6a23f816347e9ac80fd9870af27be856a425a2367a9967391c34ec931 is equal to generated hash sha256@eb1586f6a23f816347e9ac80fd9870af27be856a425a2367a9967391c34ec931
+12/14/2025 01:46:09 PM INFO:Dummy transmission has completed successfully
+12/14/2025 01:46:09 PM INFO:============================================================
+12/14/2025 01:46:09 PM INFO:Decrypytion has begun
+12/14/2025 01:46:09 PM INFO: Function decrypt: Decrpytion successful for image containing tag b'\x99\x94\xf8#\x05[\x18\xe25\xd6\xbe"6Pd\x9f'
+12/14/2025 01:46:09 PM INFO: Function decrypt: Decrpytion successful for image containing tag b'bw\x00Z\xbc\xd53N\x19\xa2\xa47"T1\xbf'
+12/14/2025 01:46:13 PM INFO: Function decrypt: Decrpytion successful for image containing tag b'\xc9"W2\x93#\n\xda\x94\xb5e\x8e2\xdedA'
+12/14/2025 01:46:13 PM INFO:Decryption has completed successfully
+12/14/2025 01:46:13 PM INFO:============================================================
+12/14/2025 01:46:13 PM INFO:Deserialization has begun
+12/14/2025 01:46:13 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image0.png.
+12/14/2025 01:46:14 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image1.png.
+12/14/2025 01:46:15 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image2.png.
+12/14/2025 01:46:16 PM INFO:Deserialization has completed successfully
+12/14/2025 01:46:16 PM INFO:============================================================
+12/14/2025 01:46:16 PM INFO:Progam has completed without error, plans can now be served to the galaxy
+12/14/2025 01:46:16 PM INFO:************************************************************
+12/14/2025 01:46:16 PM INFO:
+
+
+
+
+
+
+12/14/2025 01:46:24 PM INFO:
+     _______.     ___      .______    _______ .______      
+    /       |    /   \     |   _  \  |   ____||   _  \     
+   |   (----`   /  ^  \    |  |_)  | |  |__   |  |_)  |    
+    \   \      /  /_\  \   |   _  <  |   __|  |      /     
+.----)   |    /  _____  \  |  |_)  | |  |____ |  |\  \----.
+|_______/    /__/     \__\ |______/  |_______|| _| `._____|
+                                                           
+12/14/2025 01:46:24 PM INFO:************************************************************
+12/14/2025 01:46:24 PM INFO:============================================================
+12/14/2025 01:46:24 PM INFO:SABER demonstration has begun
+12/14/2025 01:46:24 PM INFO:============================================================
+12/14/2025 01:46:24 PM INFO:Begin circle detection
+12/14/2025 01:46:24 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image13.png
+12/14/2025 01:46:24 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image_non.png
+12/14/2025 01:46:24 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image35.png
+12/14/2025 01:46:24 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image9.png
+12/14/2025 01:46:24 PM INFO: Function convertHSV: Image converted to HSV on iteration 0.
+12/14/2025 01:46:24 PM INFO: Function convertHSV: Image converted to HSV on iteration 1.
+12/14/2025 01:46:24 PM INFO: Function convertHSV: Image converted to HSV on iteration 2.
+12/14/2025 01:46:24 PM INFO: Function convertHSV: Image converted to HSV on iteration 3.
+12/14/2025 01:46:24 PM INFO: Function maskRed: Image contained red on iteration 0.
+12/14/2025 01:46:24 PM INFO: Function maskRed: Image on iteration 1 did not contain red.
+12/14/2025 01:46:24 PM INFO: Function maskRed: Image contained red on iteration 2.
+12/14/2025 01:46:24 PM INFO: Function maskRed: Image contained red on iteration 3.
+12/14/2025 01:46:24 PM INFO: Function convertBGR: Image converted to BGR on iteration 0
+12/14/2025 01:46:24 PM INFO: Function convertBGR: Image converted to BGR on iteration 1
+12/14/2025 01:46:24 PM INFO: Function convertBGR: Image converted to BGR on iteration 2
+12/14/2025 01:46:28 PM INFO: Function findCircles: Circle detected in image on iteration 0.
+12/14/2025 01:46:28 PM DEBUG: Function findCircles: Single loop execution took 3.41090726852417 seconds for index 0.
+12/14/2025 01:46:28 PM INFO: Function findCircles: Circle detected in image on iteration 1.
+12/14/2025 01:46:28 PM DEBUG: Function findCircles: Single loop execution took 0.12740015983581543 seconds for index 1.
+12/14/2025 01:46:29 PM INFO: Function findCircles: Circle detected in image on iteration 2.
+12/14/2025 01:46:29 PM DEBUG: Function findCircles: Single loop execution took 1.3739590644836426 seconds for index 2.
+12/14/2025 01:46:29 PM DEBUG: Function findCircles: Full execution took 4.912915229797363 seconds.
+12/14/2025 01:46:29 PM INFO:Circle detection has completed successfully
+12/14/2025 01:46:29 PM INFO:============================================================
+12/14/2025 01:46:29 PM INFO:Serialization has begun
+12/14/2025 01:46:30 PM INFO:Function serialize: Image at index 0 serialized.
+12/14/2025 01:46:30 PM INFO:Function serialize: Image at index 1 serialized.
+12/14/2025 01:46:30 PM INFO:Function serialize: Image at index 2 serialized.
+12/14/2025 01:46:30 PM INFO:Serialization has completed successfully
+12/14/2025 01:46:30 PM INFO:============================================================
+12/14/2025 01:46:30 PM INFO:Encryption has begun
+12/14/2025 01:46:37 PM INFO:Encryption has completed successfully
+12/14/2025 01:46:37 PM INFO:============================================================
+12/14/2025 01:46:37 PM INFO:Dummy transmission has begun
+12/14/2025 01:46:37 PM INFO:Function main:  Image loaded to target DB with hash 42a72fc799e2b38eeb008eecd9830678b2ab9c8e0d69df7e1f98d9056f1d69fa 
+12/14/2025 01:46:38 PM INFO:Function main:  Image loaded to target DB with hash e672645fa6494acfa82c43f71fa1130997918a4184f1d17b573cb8a5f28fe478 
+12/14/2025 01:46:38 PM INFO:Function main:  Image loaded to target DB with hash 019435d427d11e38289149c913cc070ab80ff10b65ad1c104a6225593e72b586 
+12/14/2025 01:46:38 PM INFO: Function main: Received hash sha256@42a72fc799e2b38eeb008eecd9830678b2ab9c8e0d69df7e1f98d9056f1d69fa is equal to generated hash sha256@42a72fc799e2b38eeb008eecd9830678b2ab9c8e0d69df7e1f98d9056f1d69fa
+12/14/2025 01:46:38 PM INFO: Function main: Received hash sha256@e672645fa6494acfa82c43f71fa1130997918a4184f1d17b573cb8a5f28fe478 is equal to generated hash sha256@e672645fa6494acfa82c43f71fa1130997918a4184f1d17b573cb8a5f28fe478
+12/14/2025 01:46:38 PM INFO: Function main: Received hash sha256@019435d427d11e38289149c913cc070ab80ff10b65ad1c104a6225593e72b586 is equal to generated hash sha256@019435d427d11e38289149c913cc070ab80ff10b65ad1c104a6225593e72b586
+12/14/2025 01:46:38 PM INFO:Dummy transmission has completed successfully
+12/14/2025 01:46:38 PM INFO:============================================================
+12/14/2025 01:46:38 PM INFO:Decrypytion has begun
+12/14/2025 01:46:38 PM INFO: Function decrypt: Decrpytion successful for image containing tag b'\xa2Q\xf6=\xb1G\x9d\x198,\xdc\xb3\xab\xe3\xb6Y'
+12/14/2025 01:46:39 PM INFO: Function decrypt: Decrpytion successful for image containing tag b'\xce=C\xca|\x04d\t\x82}\x9b\xfcoL\xbb\xea'
+12/14/2025 01:46:40 PM INFO: Function decrypt: Decrpytion successful for image containing tag b'\xc8\xb1#\x15\xfe\xb1\xd9/^\x87\xda\x97d\n\xa2`'
+12/14/2025 01:46:40 PM INFO:Decryption has completed successfully
+12/14/2025 01:46:40 PM INFO:============================================================
+12/14/2025 01:46:40 PM INFO:Deserialization has begun
+12/14/2025 01:46:40 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image0.png.
+12/14/2025 01:46:41 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image1.png.
+12/14/2025 01:46:42 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image2.png.
+12/14/2025 01:46:43 PM INFO:Deserialization has completed successfully
+12/14/2025 01:46:43 PM INFO:============================================================
+12/14/2025 01:46:43 PM INFO:Progam has completed without error, plans can now be served to the galaxy
+12/14/2025 01:46:43 PM INFO:************************************************************
+12/14/2025 01:46:43 PM INFO:
+
+
+
+
+
+
+12/14/2025 01:47:17 PM INFO:
+     _______.     ___      .______    _______ .______      
+    /       |    /   \     |   _  \  |   ____||   _  \     
+   |   (----`   /  ^  \    |  |_)  | |  |__   |  |_)  |    
+    \   \      /  /_\  \   |   _  <  |   __|  |      /     
+.----)   |    /  _____  \  |  |_)  | |  |____ |  |\  \----.
+|_______/    /__/     \__\ |______/  |_______|| _| `._____|
+                                                           
+12/14/2025 01:47:17 PM INFO:************************************************************
+12/14/2025 01:47:17 PM INFO:============================================================
+12/14/2025 01:47:17 PM INFO: SABER demonstration has begun
+12/14/2025 01:47:17 PM INFO:============================================================
+12/14/2025 01:47:17 PM INFO: Begin circle detection
+12/14/2025 01:47:17 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image13.png
+12/14/2025 01:47:17 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image_non.png
+12/14/2025 01:47:17 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image35.png
+12/14/2025 01:47:17 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image9.png
+12/14/2025 01:47:18 PM INFO: Function convertHSV: Image converted to HSV on iteration 0.
+12/14/2025 01:47:18 PM INFO: Function convertHSV: Image converted to HSV on iteration 1.
+12/14/2025 01:47:18 PM INFO: Function convertHSV: Image converted to HSV on iteration 2.
+12/14/2025 01:47:18 PM INFO: Function convertHSV: Image converted to HSV on iteration 3.
+12/14/2025 01:47:18 PM INFO: Function maskRed: Image contained red on iteration 0.
+12/14/2025 01:47:18 PM INFO: Function maskRed: Image on iteration 1 did not contain red.
+12/14/2025 01:47:18 PM INFO: Function maskRed: Image contained red on iteration 2.
+12/14/2025 01:47:18 PM INFO: Function maskRed: Image contained red on iteration 3.
+12/14/2025 01:47:18 PM INFO: Function convertBGR: Image converted to BGR on iteration 0
+12/14/2025 01:47:18 PM INFO: Function convertBGR: Image converted to BGR on iteration 1
+12/14/2025 01:47:18 PM INFO: Function convertBGR: Image converted to BGR on iteration 2
+12/14/2025 01:47:21 PM INFO: Function findCircles: Circle detected in image on iteration 0.
+12/14/2025 01:47:21 PM DEBUG: Function findCircles: Single loop execution took 3.035834550857544 seconds for index 0.
+12/14/2025 01:47:21 PM INFO: Function findCircles: Circle detected in image on iteration 1.
+12/14/2025 01:47:21 PM DEBUG: Function findCircles: Single loop execution took 0.14060497283935547 seconds for index 1.
+12/14/2025 01:47:23 PM INFO: Function findCircles: Circle detected in image on iteration 2.
+12/14/2025 01:47:23 PM DEBUG: Function findCircles: Single loop execution took 1.6832566261291504 seconds for index 2.
+12/14/2025 01:47:23 PM DEBUG: Function findCircles: Full execution took 4.860681772232056 seconds.
+12/14/2025 01:47:23 PM INFO: Circle detection has completed successfully
+12/14/2025 01:47:23 PM INFO:============================================================
+12/14/2025 01:47:23 PM INFO: Serialization has begun
+12/14/2025 01:47:23 PM INFO:Function serialize: Image at index 0 serialized.
+12/14/2025 01:47:23 PM INFO:Function serialize: Image at index 1 serialized.
+12/14/2025 01:47:23 PM INFO:Function serialize: Image at index 2 serialized.
+12/14/2025 01:47:23 PM INFO: Serialization has completed successfully
+12/14/2025 01:47:23 PM INFO:============================================================
+12/14/2025 01:47:23 PM INFO: Encryption has begun
+12/14/2025 01:47:30 PM INFO: Encryption has completed successfully
+12/14/2025 01:47:30 PM INFO:============================================================
+12/14/2025 01:47:30 PM INFO: Dummy transmission has begun
+12/14/2025 01:47:30 PM INFO:Function main:  Image loaded to target DB with hash 85ef926ccee2e4cc0e5df94c34fad64f2fe71620e79e4940bee4d26cb6b4816c 
+12/14/2025 01:47:31 PM INFO:Function main:  Image loaded to target DB with hash c4e5dce84120d6353f8f0e4a71b8aa92195731d3ce756ce71260b35190c9ea31 
+12/14/2025 01:47:31 PM INFO:Function main:  Image loaded to target DB with hash 71475ed503e244ba9fd436b6af705cd64474f60330e310d06c68cd843f1de228 
+12/14/2025 01:47:31 PM INFO: Function main: Received hash sha256@85ef926ccee2e4cc0e5df94c34fad64f2fe71620e79e4940bee4d26cb6b4816c is equal to generated hash sha256@85ef926ccee2e4cc0e5df94c34fad64f2fe71620e79e4940bee4d26cb6b4816c
+12/14/2025 01:47:31 PM INFO: Function main: Received hash sha256@c4e5dce84120d6353f8f0e4a71b8aa92195731d3ce756ce71260b35190c9ea31 is equal to generated hash sha256@c4e5dce84120d6353f8f0e4a71b8aa92195731d3ce756ce71260b35190c9ea31
+12/14/2025 01:47:31 PM INFO: Function main: Received hash sha256@71475ed503e244ba9fd436b6af705cd64474f60330e310d06c68cd843f1de228 is equal to generated hash sha256@71475ed503e244ba9fd436b6af705cd64474f60330e310d06c68cd843f1de228
+12/14/2025 01:47:31 PM INFO: Dummy transmission has completed successfully
+12/14/2025 01:47:31 PM INFO:============================================================
+12/14/2025 01:47:31 PM INFO: Decrypytion has begun
+12/14/2025 01:47:31 PM INFO: Function decrypt: Decrpytion successful for image containing tag b'8\xf3\x8b\x92\xe9~\x07O\xbe\xc0z\xf5\xca!\x8f\xc0'
+12/14/2025 01:47:32 PM INFO: Function decrypt: Decrpytion successful for image containing tag b'\xe9\x82o!\x90\x8c\xc3$\xfey\x1f\xa1\x01\x1bi\xa0'
+12/14/2025 01:47:33 PM INFO: Function decrypt: Decrpytion successful for image containing tag b'\xeb\x83`\x92~2s\x9f?\x07K\x94S\x18\x05\x8e'
+12/14/2025 01:47:33 PM INFO: Decryption has completed successfully
+12/14/2025 01:47:33 PM INFO:============================================================
+12/14/2025 01:47:33 PM INFO: Deserialization has begun
+12/14/2025 01:47:33 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image0.png.
+12/14/2025 01:47:34 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image1.png.
+12/14/2025 01:47:35 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image2.png.
+12/14/2025 01:47:36 PM INFO: Deserialization has completed successfully
+12/14/2025 01:47:36 PM INFO:============================================================
+12/14/2025 01:47:36 PM INFO: Progam has completed without error, plans can now be served to the galaxy
+12/14/2025 01:47:36 PM INFO:************************************************************
+12/14/2025 01:47:36 PM INFO:
+
+
+
+
+
+
+12/14/2025 01:49:59 PM INFO:
+     _______.     ___      .______    _______ .______      
+    /       |    /   \     |   _  \  |   ____||   _  \     
+   |   (----`   /  ^  \    |  |_)  | |  |__   |  |_)  |    
+    \   \      /  /_\  \   |   _  <  |   __|  |      /     
+.----)   |    /  _____  \  |  |_)  | |  |____ |  |\  \----.
+|_______/    /__/     \__\ |______/  |_______|| _| `._____|
+                                                           
+12/14/2025 01:49:59 PM INFO:************************************************************
+12/14/2025 01:49:59 PM INFO:============================================================
+12/14/2025 01:49:59 PM INFO: SABER demonstration has begun
+12/14/2025 01:49:59 PM INFO:============================================================
+12/14/2025 01:49:59 PM INFO: Begin circle detection
+12/14/2025 01:49:59 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image13.png
+12/14/2025 01:49:59 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image_non.png
+12/14/2025 01:50:00 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image35.png
+12/14/2025 01:50:00 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image9.png
+12/14/2025 01:50:00 PM INFO: Function convertHSV: Image converted to HSV on iteration 0.
+12/14/2025 01:50:00 PM INFO: Function convertHSV: Image converted to HSV on iteration 1.
+12/14/2025 01:50:00 PM INFO: Function convertHSV: Image converted to HSV on iteration 2.
+12/14/2025 01:50:00 PM INFO: Function convertHSV: Image converted to HSV on iteration 3.
+12/14/2025 01:50:00 PM INFO: Function maskRed: Image contained red on iteration 0.
+12/14/2025 01:50:00 PM INFO: Function maskRed: Image on iteration 1 did not contain red.
+12/14/2025 01:50:00 PM INFO: Function maskRed: Image contained red on iteration 2.
+12/14/2025 01:50:00 PM INFO: Function maskRed: Image contained red on iteration 3.
+12/14/2025 01:50:00 PM INFO: Function convertBGR: Image converted to BGR on iteration 0
+12/14/2025 01:50:00 PM INFO: Function convertBGR: Image converted to BGR on iteration 1
+12/14/2025 01:50:00 PM INFO: Function convertBGR: Image converted to BGR on iteration 2
+12/14/2025 01:50:03 PM INFO: Function findCircles: Circle detected in image on iteration 0.
+12/14/2025 01:50:03 PM DEBUG: Function findCircles: Single loop execution took 3.0236618518829346 seconds for index 0.
+12/14/2025 01:50:03 PM INFO: Function findCircles: Circle detected in image on iteration 1.
+12/14/2025 01:50:03 PM DEBUG: Function findCircles: Single loop execution took 0.1292867660522461 seconds for index 1.
+12/14/2025 01:50:05 PM INFO: Function findCircles: Circle detected in image on iteration 2.
+12/14/2025 01:50:05 PM DEBUG: Function findCircles: Single loop execution took 2.116368055343628 seconds for index 2.
+12/14/2025 01:50:05 PM DEBUG: Function findCircles: Full execution took 5.270181655883789 seconds.
+12/14/2025 01:50:05 PM INFO: Circle detection has completed successfully
+12/14/2025 01:50:05 PM INFO:============================================================
+12/14/2025 01:50:05 PM INFO: Serialization has begun
+12/14/2025 01:50:05 PM INFO: Function serialize: Image at index 0 serialized.
+12/14/2025 01:50:06 PM INFO: Function serialize: Image at index 1 serialized.
+12/14/2025 01:50:06 PM INFO: Function serialize: Image at index 2 serialized.
+12/14/2025 01:50:06 PM INFO: Serialization has completed successfully
+12/14/2025 01:50:06 PM INFO:============================================================
+12/14/2025 01:50:06 PM INFO: Encryption has begun
+12/14/2025 01:50:13 PM INFO: Encryption has completed successfully
+12/14/2025 01:50:13 PM INFO:============================================================
+12/14/2025 01:50:13 PM INFO: Dummy transmission has begun
+12/14/2025 01:50:13 PM INFO:Function main:  Image loaded to target DB with hash 2ddf3813ba12764bda67ecf42056a8c4b77fad1ebb6a8f4e9f2134b2cc724fb8 
+12/14/2025 01:50:14 PM INFO:Function main:  Image loaded to target DB with hash 4d8ce698b61e20d3a993359a7093c753da793c1c23cc4bc83e1d76f3cef58a3e 
+12/14/2025 01:50:14 PM INFO:Function main:  Image loaded to target DB with hash c3599dcf9eca47134982658bc02b757444a52960b1362d9ee8ea3393de98900d 
+12/14/2025 01:50:14 PM INFO: Function main: Received hash sha256@2ddf3813ba12764bda67ecf42056a8c4b77fad1ebb6a8f4e9f2134b2cc724fb8 is equal to generated hash sha256@2ddf3813ba12764bda67ecf42056a8c4b77fad1ebb6a8f4e9f2134b2cc724fb8
+12/14/2025 01:50:14 PM INFO: Function main: Received hash sha256@4d8ce698b61e20d3a993359a7093c753da793c1c23cc4bc83e1d76f3cef58a3e is equal to generated hash sha256@4d8ce698b61e20d3a993359a7093c753da793c1c23cc4bc83e1d76f3cef58a3e
+12/14/2025 01:50:14 PM INFO: Function main: Received hash sha256@c3599dcf9eca47134982658bc02b757444a52960b1362d9ee8ea3393de98900d is equal to generated hash sha256@c3599dcf9eca47134982658bc02b757444a52960b1362d9ee8ea3393de98900d
+12/14/2025 01:50:14 PM INFO: Dummy transmission has completed successfully
+12/14/2025 01:50:14 PM INFO:============================================================
+12/14/2025 01:50:14 PM INFO: Decrypytion has begun
+12/14/2025 01:50:14 PM INFO: Function decrypt: Decrpytion successful for image containing tag b'8\xdc\xa95\x08w_\xad\xd5\x980\x9c:/\xbed'
+12/14/2025 01:50:15 PM INFO: Function decrypt: Decrpytion successful for image containing tag b'\x94\xc7\x90\x92\xef\xdb\xa7wPx\xd3\xd6\x06XT\r'
+12/14/2025 01:50:16 PM INFO: Function decrypt: Decrpytion successful for image containing tag b'd)\xdf\xdan\x8a\xc9\xca\xe2$\x06r>\xc0\x97U'
+12/14/2025 01:50:16 PM INFO: Decryption has completed successfully
+12/14/2025 01:50:16 PM INFO:============================================================
+12/14/2025 01:50:16 PM INFO: Deserialization has begun
+12/14/2025 01:50:16 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image0.png.
+12/14/2025 01:50:17 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image1.png.
+12/14/2025 01:50:18 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image2.png.
+12/14/2025 01:50:19 PM INFO: Deserialization has completed successfully
+12/14/2025 01:50:19 PM INFO:============================================================
+12/14/2025 01:50:19 PM INFO: Progam has completed without error, plans can now be served to the galaxy
+12/14/2025 01:50:19 PM INFO:************************************************************
+12/14/2025 01:50:19 PM INFO:
+
+
+
+
+
+
+12/14/2025 01:51:13 PM INFO:
+     _______.     ___      .______    _______ .______      
+    /       |    /   \     |   _  \  |   ____||   _  \     
+   |   (----`   /  ^  \    |  |_)  | |  |__   |  |_)  |    
+    \   \      /  /_\  \   |   _  <  |   __|  |      /     
+.----)   |    /  _____  \  |  |_)  | |  |____ |  |\  \----.
+|_______/    /__/     \__\ |______/  |_______|| _| `._____|
+                                                           
+12/14/2025 01:51:13 PM INFO:************************************************************
+12/14/2025 01:51:13 PM INFO:============================================================
+12/14/2025 01:51:13 PM INFO: SABER demonstration has begun
+12/14/2025 01:51:13 PM INFO:============================================================
+12/14/2025 01:51:13 PM INFO: Begin circle detection
+12/14/2025 01:51:13 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image13.png
+12/14/2025 01:51:13 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image_non.png
+12/14/2025 01:51:13 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image35.png
+12/14/2025 01:51:13 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image9.png
+12/14/2025 01:51:14 PM INFO: Function convertHSV: Image converted to HSV on iteration 0.
+12/14/2025 01:51:14 PM INFO: Function convertHSV: Image converted to HSV on iteration 1.
+12/14/2025 01:51:14 PM INFO: Function convertHSV: Image converted to HSV on iteration 2.
+12/14/2025 01:51:14 PM INFO: Function convertHSV: Image converted to HSV on iteration 3.
+12/14/2025 01:51:14 PM INFO: Function maskRed: Image contained red on iteration 0.
+12/14/2025 01:51:14 PM INFO: Function maskRed: Image on iteration 1 did not contain red.
+12/14/2025 01:51:14 PM INFO: Function maskRed: Image contained red on iteration 2.
+12/14/2025 01:51:14 PM INFO: Function maskRed: Image contained red on iteration 3.
+12/14/2025 01:51:14 PM INFO: Function convertBGR: Image converted to BGR on iteration 0
+12/14/2025 01:51:14 PM INFO: Function convertBGR: Image converted to BGR on iteration 1
+12/14/2025 01:51:14 PM INFO: Function convertBGR: Image converted to BGR on iteration 2
+12/14/2025 01:51:17 PM INFO: Function findCircles: Circle detected in image on iteration 0.
+12/14/2025 01:51:17 PM INFO: Function findCircles: Single loop execution took 2.964467763900757 seconds for index 0.
+12/14/2025 01:51:17 PM INFO: Function findCircles: Circle detected in image on iteration 1.
+12/14/2025 01:51:17 PM INFO: Function findCircles: Single loop execution took 0.13870978355407715 seconds for index 1.
+12/14/2025 01:51:19 PM INFO: Function findCircles: Circle detected in image on iteration 2.
+12/14/2025 01:51:19 PM INFO: Function findCircles: Single loop execution took 1.9802827835083008 seconds for index 2.
+12/14/2025 01:51:19 PM INFO: Function findCircles: Full execution took 5.0844409465789795 seconds.
+12/14/2025 01:51:19 PM INFO: Circle detection has completed successfully
+12/14/2025 01:51:19 PM INFO:============================================================
+12/14/2025 01:51:19 PM INFO: Serialization has begun
+12/14/2025 01:51:19 PM INFO: Function serialize: Image at index 0 serialized.
+12/14/2025 01:51:19 PM INFO: Function serialize: Image at index 1 serialized.
+12/14/2025 01:51:20 PM INFO: Function serialize: Image at index 2 serialized.
+12/14/2025 01:51:20 PM INFO: Serialization has completed successfully
+12/14/2025 01:51:20 PM INFO:============================================================
+12/14/2025 01:51:20 PM INFO: Encryption has begun
+12/14/2025 01:51:30 PM INFO: Encryption has completed successfully
+12/14/2025 01:51:30 PM INFO:============================================================
+12/14/2025 01:51:30 PM INFO: Dummy transmission has begun
+12/14/2025 01:51:30 PM INFO:Function main:  Image loaded to target DB with hash 67924e63258b2b4888c6b3c0ade958db8ceadaafa823a20637c8dc7984fbdec3 
+12/14/2025 01:51:30 PM INFO:Function main:  Image loaded to target DB with hash de28c2c3801c81ab5a44bb1043480496f6149fee1249d1e3cdf691b76de53f4e 
+12/14/2025 01:51:30 PM INFO:Function main:  Image loaded to target DB with hash c901f8c144b927724695d79325bf3b6e1d70f16d8d021122aa1c7997b5b053c5 
+12/14/2025 01:51:31 PM INFO: Function main: Received hash sha256@67924e63258b2b4888c6b3c0ade958db8ceadaafa823a20637c8dc7984fbdec3 is equal to generated hash sha256@67924e63258b2b4888c6b3c0ade958db8ceadaafa823a20637c8dc7984fbdec3
+12/14/2025 01:51:31 PM INFO: Function main: Received hash sha256@de28c2c3801c81ab5a44bb1043480496f6149fee1249d1e3cdf691b76de53f4e is equal to generated hash sha256@de28c2c3801c81ab5a44bb1043480496f6149fee1249d1e3cdf691b76de53f4e
+12/14/2025 01:51:31 PM INFO: Function main: Received hash sha256@c901f8c144b927724695d79325bf3b6e1d70f16d8d021122aa1c7997b5b053c5 is equal to generated hash sha256@c901f8c144b927724695d79325bf3b6e1d70f16d8d021122aa1c7997b5b053c5
+12/14/2025 01:51:31 PM INFO: Dummy transmission has completed successfully
+12/14/2025 01:51:31 PM INFO:============================================================
+12/14/2025 01:51:31 PM INFO: Decrypytion has begun
+12/14/2025 01:51:31 PM INFO: Function decrypt: Decrpytion successful for image containing tag b'@\xb1\xef\x1b\xd3\xcc\x84q\x90Q\xc5\xf4\xa7\x01\x13\xe9'
+12/14/2025 01:51:31 PM INFO: Function decrypt: Decrpytion successful for image containing tag b'\x97\x92n\xe8U\x9a9N\x9f\x85\xe55\xcbw\xe6\x07'
+12/14/2025 01:51:32 PM INFO: Function decrypt: Decrpytion successful for image containing tag b'\x1bn\x9b\x91\\`J\x9d\xae#\xed\x88\xc8\x9a\x86\x99'
+12/14/2025 01:51:33 PM INFO: Decryption has completed successfully
+12/14/2025 01:51:33 PM INFO:============================================================
+12/14/2025 01:51:33 PM INFO: Deserialization has begun
+12/14/2025 01:51:33 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image0.png.
+12/14/2025 01:51:33 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image1.png.
+12/14/2025 01:51:35 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image2.png.
+12/14/2025 01:51:35 PM INFO: Deserialization has completed successfully
+12/14/2025 01:51:35 PM INFO:============================================================
+12/14/2025 01:51:35 PM INFO: Progam has completed without error, plans can now be served to the galaxy
+12/14/2025 01:51:35 PM INFO:************************************************************
+
+
+
+
+
+
+12/14/2025 01:53:01 PM INFO:
+     _______.     ___      .______    _______ .______      
+    /       |    /   \     |   _  \  |   ____||   _  \     
+   |   (----`   /  ^  \    |  |_)  | |  |__   |  |_)  |    
+    \   \      /  /_\  \   |   _  <  |   __|  |      /     
+.----)   |    /  _____  \  |  |_)  | |  |____ |  |\  \----.
+|_______/    /__/     \__\ |______/  |_______|| _| `._____|
+                                                           
+12/14/2025 01:53:01 PM INFO:************************************************************
+12/14/2025 01:53:01 PM INFO:========================================================================================================================
+
+12/14/2025 01:53:01 PM INFO: SABER demonstration has begun.
+12/14/2025 01:53:01 PM INFO:========================================================================================================================
+
+12/14/2025 01:53:01 PM INFO: Begin circle detection
+12/14/2025 01:53:01 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image13.png
+12/14/2025 01:53:01 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image_non.png
+12/14/2025 01:53:01 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image35.png
+12/14/2025 01:53:02 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image9.png
+12/14/2025 01:53:02 PM INFO: Function convertHSV: Image converted to HSV on iteration 0.
+12/14/2025 01:53:02 PM INFO: Function convertHSV: Image converted to HSV on iteration 1.
+12/14/2025 01:53:02 PM INFO: Function convertHSV: Image converted to HSV on iteration 2.
+12/14/2025 01:53:02 PM INFO: Function convertHSV: Image converted to HSV on iteration 3.
+12/14/2025 01:53:02 PM INFO: Function maskRed: Image contained red on iteration 0.
+12/14/2025 01:53:03 PM INFO: Function maskRed: Image on iteration 1 did not contain red.
+12/14/2025 01:53:05 PM INFO: Function maskRed: Image contained red on iteration 2.
+12/14/2025 01:53:06 PM INFO: Function maskRed: Image contained red on iteration 3.
+12/14/2025 01:53:06 PM INFO: Function convertBGR: Image converted to BGR on iteration 0
+12/14/2025 01:53:06 PM INFO: Function convertBGR: Image converted to BGR on iteration 1
+12/14/2025 01:53:06 PM INFO: Function convertBGR: Image converted to BGR on iteration 2
+12/14/2025 01:53:14 PM INFO: Function findCircles: Circle detected in image on iteration 0.
+12/14/2025 01:53:14 PM INFO: Function findCircles: Single loop execution took 8.814758062362671 seconds for index 0.
+12/14/2025 01:53:15 PM INFO: Function findCircles: Circle detected in image on iteration 1.
+12/14/2025 01:53:15 PM INFO: Function findCircles: Single loop execution took 0.12450122833251953 seconds for index 1.
+12/14/2025 01:53:16 PM INFO: Function findCircles: Circle detected in image on iteration 2.
+12/14/2025 01:53:16 PM INFO: Function findCircles: Single loop execution took 1.4507124423980713 seconds for index 2.
+12/14/2025 01:53:16 PM INFO: Function findCircles: Full execution took 10.390466451644897 seconds.
+12/14/2025 01:53:16 PM INFO: Circle detection has completed successfully
+12/14/2025 01:53:16 PM INFO:========================================================================================================================
+
+12/14/2025 01:53:16 PM INFO: Serialization has begun
+12/14/2025 01:53:16 PM INFO: Function serialize: Image at index 0 serialized.
+12/14/2025 01:53:17 PM INFO: Function serialize: Image at index 1 serialized.
+12/14/2025 01:53:17 PM INFO: Function serialize: Image at index 2 serialized.
+12/14/2025 01:53:17 PM INFO: Serialization has completed successfully
+12/14/2025 01:53:17 PM INFO:========================================================================================================================
+
+12/14/2025 01:53:17 PM INFO: Encryption has begun
+12/14/2025 01:53:24 PM INFO: Encryption has completed successfully
+12/14/2025 01:53:24 PM INFO:========================================================================================================================
+
+12/14/2025 01:53:24 PM INFO: Dummy transmission has begun
+12/14/2025 01:53:24 PM INFO:Function main:  Image loaded to target DB with hash 960464ccacb7dd32334cab5829b3697590e8bb6d56070ef6413cf5d3dc26fbb1 
+12/14/2025 01:53:24 PM INFO:Function main:  Image loaded to target DB with hash 61d4002033ffa9ae800cf5c877409ef583e5c0d47c8d924fd8dbd1c1d5702f4a 
+12/14/2025 01:53:25 PM INFO:Function main:  Image loaded to target DB with hash 212d479724d499d2d7975a1ae186de4bcc960d8cda203b8218cbf287e0fb2fbc 
+12/14/2025 01:53:25 PM INFO: Function main: Received hash sha256@960464ccacb7dd32334cab5829b3697590e8bb6d56070ef6413cf5d3dc26fbb1 is equal to generated hash sha256@960464ccacb7dd32334cab5829b3697590e8bb6d56070ef6413cf5d3dc26fbb1
+12/14/2025 01:53:25 PM INFO: Function main: Received hash sha256@61d4002033ffa9ae800cf5c877409ef583e5c0d47c8d924fd8dbd1c1d5702f4a is equal to generated hash sha256@61d4002033ffa9ae800cf5c877409ef583e5c0d47c8d924fd8dbd1c1d5702f4a
+12/14/2025 01:53:25 PM INFO: Function main: Received hash sha256@212d479724d499d2d7975a1ae186de4bcc960d8cda203b8218cbf287e0fb2fbc is equal to generated hash sha256@212d479724d499d2d7975a1ae186de4bcc960d8cda203b8218cbf287e0fb2fbc
+12/14/2025 01:53:25 PM INFO: Dummy transmission has completed successfully
+12/14/2025 01:53:25 PM INFO:========================================================================================================================
+
+12/14/2025 01:53:25 PM INFO: Decrypytion has begun
+12/14/2025 01:53:25 PM INFO: Function decrypt: Decrpytion successful for image containing tag b'6:c]w\xfd\xfaH\x0c\xb1s\x02\xab \x8c\x04'
+12/14/2025 01:53:25 PM INFO: Function decrypt: Decrpytion successful for image containing tag b'\xc3K\x92\xf1w\xf5\xda;{\xeaJ\xdb00\xbeu'
+12/14/2025 01:53:26 PM INFO: Function decrypt: Decrpytion successful for image containing tag b'\xef\xc5\xe6\x96E<m\xa8\x1f\xd2\xbb\x86\x14k\xbbp'
+12/14/2025 01:53:32 PM INFO: Decryption has completed successfully
+12/14/2025 01:53:32 PM INFO:========================================================================================================================
+
+12/14/2025 01:53:32 PM INFO: Deserialization has begun
+12/14/2025 01:53:33 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image0.png.
+12/14/2025 01:53:33 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image1.png.
+12/14/2025 01:53:34 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image2.png.
+12/14/2025 01:53:35 PM INFO: Deserialization has completed successfully
+12/14/2025 01:53:35 PM INFO:========================================================================================================================
+
+12/14/2025 01:53:35 PM INFO: Progam has completed without error, plans can now be served to the galaxy
+12/14/2025 01:53:35 PM INFO:************************************************************************************************************************
+
+
+
+
+
+
+12/14/2025 01:56:44 PM INFO:
+     _______.     ___      .______    _______ .______      
+    /       |    /   \     |   _  \  |   ____||   _  \     
+   |   (----`   /  ^  \    |  |_)  | |  |__   |  |_)  |    
+    \   \      /  /_\  \   |   _  <  |   __|  |      /     
+.----)   |    /  _____  \  |  |_)  | |  |____ |  |\  \----.
+|_______/    /__/     \__\ |______/  |_______|| _| `._____|
+                                                           
+12/14/2025 01:56:44 PM INFO: ************************************************************
+12/14/2025 01:56:44 PM INFO: ========================================================================================================================
+12/14/2025 01:56:44 PM INFO: SABER demonstration has begun.
+12/14/2025 01:56:44 PM INFO: ========================================================================================================================
+
+12/14/2025 01:56:44 PM INFO: Begin circle detection
+12/14/2025 01:56:44 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image13.png
+12/14/2025 01:56:44 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image_non.png
+12/14/2025 01:56:44 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image35.png
+12/14/2025 01:56:44 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image9.png
+12/14/2025 01:56:44 PM INFO: Function convertHSV: Image converted to HSV on iteration 0.
+12/14/2025 01:56:44 PM INFO: Function convertHSV: Image converted to HSV on iteration 1.
+12/14/2025 01:56:44 PM INFO: Function convertHSV: Image converted to HSV on iteration 2.
+12/14/2025 01:56:44 PM INFO: Function convertHSV: Image converted to HSV on iteration 3.
+12/14/2025 01:56:44 PM INFO: Function maskRed: Image contained red on iteration 0.
+12/14/2025 01:56:44 PM INFO: Function maskRed: Image on iteration 1 did not contain red.
+12/14/2025 01:56:44 PM INFO: Function maskRed: Image contained red on iteration 2.
+12/14/2025 01:56:44 PM INFO: Function maskRed: Image contained red on iteration 3.
+12/14/2025 01:56:44 PM INFO: Function convertBGR: Image converted to BGR on iteration 0
+12/14/2025 01:56:45 PM INFO: Function convertBGR: Image converted to BGR on iteration 1
+12/14/2025 01:56:45 PM INFO: Function convertBGR: Image converted to BGR on iteration 2
+12/14/2025 01:56:48 PM INFO: Function findCircles: Circle detected in image on iteration 0.
+12/14/2025 01:56:48 PM INFO: Function findCircles: Single loop execution took 3.048067808151245 seconds for index 0.
+12/14/2025 01:56:48 PM INFO: Function findCircles: Circle detected in image on iteration 1.
+12/14/2025 01:56:48 PM INFO: Function findCircles: Single loop execution took 0.14978313446044922 seconds for index 1.
+12/14/2025 01:56:50 PM INFO: Function findCircles: Circle detected in image on iteration 2.
+12/14/2025 01:56:50 PM INFO: Function findCircles: Single loop execution took 1.7993309497833252 seconds for index 2.
+12/14/2025 01:56:50 PM INFO: Function findCircles: Full execution took 4.998189926147461 seconds.
+12/14/2025 01:56:50 PM INFO: Circle detection has completed successfully
+12/14/2025 01:56:50 PM INFO: ========================================================================================================================
+
+12/14/2025 01:56:50 PM INFO: Serialization has begun
+12/14/2025 01:56:50 PM INFO: Function serialize: Image at index 0 serialized.
+12/14/2025 01:56:50 PM INFO: Function serialize: Image at index 1 serialized.
+12/14/2025 01:56:50 PM INFO: Function serialize: Image at index 2 serialized.
+12/14/2025 01:56:50 PM INFO: Serialization has completed successfully
+
+12/14/2025 01:56:50 PM INFO: ========================================================================================================================
+
+12/14/2025 01:56:50 PM INFO: Encryption has begun
+12/14/2025 01:56:58 PM INFO: Encryption has completed successfully
+
+12/14/2025 01:56:58 PM INFO: ========================================================================================================================
+
+12/14/2025 01:56:58 PM INFO: Dummy transmission has begun
+12/14/2025 01:56:58 PM INFO: Function main:  Image loaded to target DB with hash 29d54fb750d9138a08ba79975ce07d2ac5eceef106ff961b648e6ecf7a4ac2a0 
+12/14/2025 01:56:59 PM INFO: Function main:  Image loaded to target DB with hash cd4344feedd4de6299d3b08d1329d7d871344f9e3946fda6cce792f4dce6e8f6 
+12/14/2025 01:56:59 PM INFO: Function main:  Image loaded to target DB with hash dc0818dfb88e80ea02732b878c367f4c42b44291389700e583e8176f343de6b7 
+12/14/2025 01:56:59 PM INFO: Function main: Received hash sha256@29d54fb750d9138a08ba79975ce07d2ac5eceef106ff961b648e6ecf7a4ac2a0 is equal to generated hash sha256@29d54fb750d9138a08ba79975ce07d2ac5eceef106ff961b648e6ecf7a4ac2a0
+12/14/2025 01:56:59 PM INFO: Function main: Received hash sha256@cd4344feedd4de6299d3b08d1329d7d871344f9e3946fda6cce792f4dce6e8f6 is equal to generated hash sha256@cd4344feedd4de6299d3b08d1329d7d871344f9e3946fda6cce792f4dce6e8f6
+12/14/2025 01:56:59 PM INFO: Function main: Received hash sha256@dc0818dfb88e80ea02732b878c367f4c42b44291389700e583e8176f343de6b7 is equal to generated hash sha256@dc0818dfb88e80ea02732b878c367f4c42b44291389700e583e8176f343de6b7
+12/14/2025 01:56:59 PM INFO: Dummy transmission has completed successfully
+
+12/14/2025 01:56:59 PM INFO: ========================================================================================================================
+
+12/14/2025 01:56:59 PM INFO: Decrypytion has begun
+12/14/2025 01:56:59 PM INFO: Function decrypt: Decrpytion successful for image containing tag b'j\xc7\xaa9\x070\xd9\xf6\xc6\xfc\x9fyLh\xd1\xcd'
+12/14/2025 01:57:00 PM INFO: Function decrypt: Decrpytion successful for image containing tag b'\x04\x7fR\x14\x02\xb1\xc8\x1a\xa7\x06\xec\x8a\x89\xa2Yx'
+12/14/2025 01:57:01 PM INFO: Function decrypt: Decrpytion successful for image containing tag b'Q\x1f3?v\xf8>\x97\xc0\xc7\x14\xee_G\x92\xe2'
+12/14/2025 01:57:02 PM INFO: Decryption has completed successfully
+12/14/2025 01:57:02 PM INFO: ========================================================================================================================
+
+12/14/2025 01:57:02 PM INFO: Deserialization has begun
+12/14/2025 01:57:02 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image0.png.
+12/14/2025 01:57:02 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image1.png.
+12/14/2025 01:57:04 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image2.png.
+12/14/2025 01:57:05 PM INFO: Deserialization has completed successfully
+
+12/14/2025 01:57:05 PM INFO: ========================================================================================================================
+
+12/14/2025 01:57:05 PM INFO: Progam has completed without error, plans can now be served to the galaxy
+
+12/14/2025 01:57:05 PM INFO: ************************************************************************************************************************
+
+
+
+
+
+
+12/14/2025 01:58:12 PM INFO: ************************************************************************************************************************
+12/14/2025 01:58:12 PM INFO:
+     _______.     ___      .______    _______ .______      
+    /       |    /   \     |   _  \  |   ____||   _  \     
+   |   (----`   /  ^  \    |  |_)  | |  |__   |  |_)  |    
+    \   \      /  /_\  \   |   _  <  |   __|  |      /     
+.----)   |    /  _____  \  |  |_)  | |  |____ |  |\  \----.
+|_______/    /__/     \__\ |______/  |_______|| _| `._____|
+                                                           
+12/14/2025 01:58:12 PM INFO: ========================================================================================================================
+12/14/2025 01:58:12 PM INFO: SABER demonstration has begun.
+12/14/2025 01:58:12 PM INFO: ========================================================================================================================
+
+12/14/2025 01:58:12 PM INFO: Begin circle detection
+12/14/2025 01:58:12 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image13.png
+12/14/2025 01:58:12 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image_non.png
+12/14/2025 01:58:12 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image35.png
+12/14/2025 01:58:12 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image9.png
+12/14/2025 01:58:12 PM INFO: Function convertHSV: Image converted to HSV on iteration 0.
+12/14/2025 01:58:12 PM INFO: Function convertHSV: Image converted to HSV on iteration 1.
+12/14/2025 01:58:12 PM INFO: Function convertHSV: Image converted to HSV on iteration 2.
+12/14/2025 01:58:12 PM INFO: Function convertHSV: Image converted to HSV on iteration 3.
+12/14/2025 01:58:12 PM INFO: Function maskRed: Image contained red on iteration 0.
+12/14/2025 01:58:12 PM INFO: Function maskRed: Image on iteration 1 did not contain red.
+12/14/2025 01:58:12 PM INFO: Function maskRed: Image contained red on iteration 2.
+12/14/2025 01:58:12 PM INFO: Function maskRed: Image contained red on iteration 3.
+12/14/2025 01:58:12 PM INFO: Function convertBGR: Image converted to BGR on iteration 0
+12/14/2025 01:58:12 PM INFO: Function convertBGR: Image converted to BGR on iteration 1
+12/14/2025 01:58:12 PM INFO: Function convertBGR: Image converted to BGR on iteration 2
+12/14/2025 01:58:15 PM INFO: Function findCircles: Circle detected in image on iteration 0.
+12/14/2025 01:58:15 PM INFO: Function findCircles: Single loop execution took 2.924708366394043 seconds for index 0.
+12/14/2025 01:58:16 PM INFO: Function findCircles: Circle detected in image on iteration 1.
+12/14/2025 01:58:16 PM INFO: Function findCircles: Single loop execution took 0.1264653205871582 seconds for index 1.
+12/14/2025 01:58:17 PM INFO: Function findCircles: Circle detected in image on iteration 2.
+12/14/2025 01:58:17 PM INFO: Function findCircles: Single loop execution took 1.746452808380127 seconds for index 2.
+12/14/2025 01:58:17 PM INFO: Function findCircles: Full execution took 4.798253297805786 seconds.
+12/14/2025 01:58:17 PM INFO: Circle detection has completed successfully
+12/14/2025 01:58:17 PM INFO: ========================================================================================================================
+
+12/14/2025 01:58:17 PM INFO: Serialization has begun
+12/14/2025 01:58:17 PM INFO: Function serialize: Image at index 0 serialized.
+12/14/2025 01:58:18 PM INFO: Function serialize: Image at index 1 serialized.
+12/14/2025 01:58:18 PM INFO: Function serialize: Image at index 2 serialized.
+12/14/2025 01:58:18 PM INFO: Serialization has completed successfully
+
+12/14/2025 01:58:18 PM INFO: ========================================================================================================================
+
+12/14/2025 01:58:18 PM INFO: Encryption has begun
+12/14/2025 01:58:27 PM INFO: Encryption has completed successfully
+
+12/14/2025 01:58:27 PM INFO: ========================================================================================================================
+
+12/14/2025 01:58:27 PM INFO: Dummy transmission has begun
+12/14/2025 01:58:27 PM INFO: Function main:  Image loaded to target DB with hash d66c6dd19c1c3f96a108a2bff74b2918318b2a11329ee32ddf048c161c24bfbd 
+12/14/2025 01:58:29 PM INFO: Function main:  Image loaded to target DB with hash 32e4b5dc5884f9a1efd6b6f4c9d039f536002224bc0cf9a9234eac2e5593a613 
+12/14/2025 01:58:29 PM INFO: Function main:  Image loaded to target DB with hash d0ee67e36bd9e5de1e5e9ea581b43d77d3bcdba6c7fea4af2ea8420114e8fecd 
+12/14/2025 01:58:29 PM INFO: Function main: Received hash sha256@d66c6dd19c1c3f96a108a2bff74b2918318b2a11329ee32ddf048c161c24bfbd is equal to generated hash sha256@d66c6dd19c1c3f96a108a2bff74b2918318b2a11329ee32ddf048c161c24bfbd
+12/14/2025 01:58:29 PM INFO: Function main: Received hash sha256@32e4b5dc5884f9a1efd6b6f4c9d039f536002224bc0cf9a9234eac2e5593a613 is equal to generated hash sha256@32e4b5dc5884f9a1efd6b6f4c9d039f536002224bc0cf9a9234eac2e5593a613
+12/14/2025 01:58:29 PM INFO: Function main: Received hash sha256@d0ee67e36bd9e5de1e5e9ea581b43d77d3bcdba6c7fea4af2ea8420114e8fecd is equal to generated hash sha256@d0ee67e36bd9e5de1e5e9ea581b43d77d3bcdba6c7fea4af2ea8420114e8fecd
+12/14/2025 01:58:29 PM INFO: Dummy transmission has completed successfully
+
+12/14/2025 01:58:29 PM INFO: ========================================================================================================================
+
+12/14/2025 01:58:29 PM INFO: Decrypytion has begun
+12/14/2025 01:58:29 PM INFO: Function decrypt: Decrpytion successful for image containing tag b'+\r\x11\x80\xd91}\xabF\xed\x9f0\x93I@\x9a'
+12/14/2025 01:58:30 PM INFO: Function decrypt: Decrpytion successful for image containing tag b'\x9e\x13\x8bg\xa1\xbb\xb3f\xb8e\xba1\xaa\x0b`-'
+12/14/2025 01:58:32 PM INFO: Function decrypt: Decrpytion successful for image containing tag b'\xd2\xd4\r\xd81\xb3\xbd=\xe9\xc3\x83mp[\x11`'
+12/14/2025 01:58:32 PM INFO: Decryption has completed successfully
+12/14/2025 01:58:32 PM INFO: ========================================================================================================================
+
+12/14/2025 01:58:32 PM INFO: Deserialization has begun
+12/14/2025 01:58:32 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image0.png.
+12/14/2025 01:58:33 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image1.png.
+12/14/2025 01:58:34 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image2.png.
+12/14/2025 01:58:34 PM INFO: Deserialization has completed successfully
+
+12/14/2025 01:58:34 PM INFO: ========================================================================================================================
+
+12/14/2025 01:58:34 PM INFO: Progam has completed without error, plans can now be served to the galaxy
+
+12/14/2025 01:58:34 PM INFO: ************************************************************************************************************************
+
+
+
+
+
+
+12/14/2025 02:00:39 PM INFO: ************************************************************************************************************************
+12/14/2025 02:00:39 PM INFO:
+                            _______.     ___      .______    _______ .______      
+                            /       |    /   \     |   _  \  |   ____||   _  \     
+                            |  (----`   /  ^  \    |  |_)  | |  |__   |  |_)  |    
+                            \   \      /  /_\  \   |   _  <  |   __|  |      /     
+                        .----)   |    /  _____  \  |  |_)  | |  |____ |  |\  \----.
+                        |_______/    /__/     \__\ |______/  |_______|| _| `._____|
+                                                           
+12/14/2025 02:00:39 PM INFO: ========================================================================================================================
+12/14/2025 02:00:39 PM INFO: SABER demonstration has begun.
+12/14/2025 02:00:39 PM INFO: ========================================================================================================================
+
+12/14/2025 02:00:39 PM INFO: Begin circle detection
+12/14/2025 02:00:40 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image13.png
+12/14/2025 02:00:40 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image_non.png
+12/14/2025 02:00:40 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image35.png
+12/14/2025 02:00:40 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image9.png
+12/14/2025 02:00:40 PM INFO: Function convertHSV: Image converted to HSV on iteration 0.
+12/14/2025 02:00:40 PM INFO: Function convertHSV: Image converted to HSV on iteration 1.
+12/14/2025 02:00:40 PM INFO: Function convertHSV: Image converted to HSV on iteration 2.
+12/14/2025 02:00:40 PM INFO: Function convertHSV: Image converted to HSV on iteration 3.
+12/14/2025 02:00:40 PM INFO: Function maskRed: Image contained red on iteration 0.
+12/14/2025 02:00:40 PM INFO: Function maskRed: Image on iteration 1 did not contain red.
+12/14/2025 02:00:40 PM INFO: Function maskRed: Image contained red on iteration 2.
+12/14/2025 02:00:40 PM INFO: Function maskRed: Image contained red on iteration 3.
+12/14/2025 02:00:40 PM INFO: Function convertBGR: Image converted to BGR on iteration 0
+12/14/2025 02:00:40 PM INFO: Function convertBGR: Image converted to BGR on iteration 1
+12/14/2025 02:00:40 PM INFO: Function convertBGR: Image converted to BGR on iteration 2
+12/14/2025 02:00:43 PM INFO: Function findCircles: Circle detected in image on iteration 0.
+12/14/2025 02:00:43 PM INFO: Function findCircles: Single loop execution took 3.091799259185791 seconds for index 0.
+12/14/2025 02:00:43 PM INFO: Function findCircles: Circle detected in image on iteration 1.
+12/14/2025 02:00:43 PM INFO: Function findCircles: Single loop execution took 0.1247706413269043 seconds for index 1.
+12/14/2025 02:00:45 PM INFO: Function findCircles: Circle detected in image on iteration 2.
+12/14/2025 02:00:45 PM INFO: Function findCircles: Single loop execution took 1.6088721752166748 seconds for index 2.
+12/14/2025 02:00:45 PM INFO: Function findCircles: Full execution took 4.82608962059021 seconds.
+12/14/2025 02:00:45 PM INFO: Circle detection has completed successfully
+12/14/2025 02:00:45 PM INFO: ========================================================================================================================
+
+12/14/2025 02:00:45 PM INFO: Serialization has begun
+12/14/2025 02:00:45 PM INFO: Function serialize: Image at index 0 serialized.
+12/14/2025 02:00:46 PM INFO: Function serialize: Image at index 1 serialized.
+12/14/2025 02:00:46 PM INFO: Function serialize: Image at index 2 serialized.
+12/14/2025 02:00:46 PM INFO: Serialization has completed successfully
+
+12/14/2025 02:00:46 PM INFO: ========================================================================================================================
+
+12/14/2025 02:00:46 PM INFO: Encryption has begun
+12/14/2025 02:00:53 PM INFO: Encryption has completed successfully
+
+12/14/2025 02:00:53 PM INFO: ========================================================================================================================
+
+12/14/2025 02:00:53 PM INFO: Dummy transmission has begun
+12/14/2025 02:00:53 PM INFO: Function main:  Image loaded to target DB with hash feb09543adca43ff286600647d5c87276639c22c6b1a35af71b56841a29478c3 
+12/14/2025 02:00:54 PM INFO: Function main:  Image loaded to target DB with hash 709095264e06526e68a0021858189467ad0f3afc57569c5f7d3beb02a5b55a90 
+12/14/2025 02:00:54 PM INFO: Function main:  Image loaded to target DB with hash c29e104de52a7d769cc998522d8eb00458194de34aeebdec2d9eb73fd338b002 
+12/14/2025 02:00:54 PM INFO: Function main: Received hash sha256@feb09543adca43ff286600647d5c87276639c22c6b1a35af71b56841a29478c3 is equal to generated hash sha256@feb09543adca43ff286600647d5c87276639c22c6b1a35af71b56841a29478c3
+12/14/2025 02:00:54 PM INFO: Function main: Received hash sha256@709095264e06526e68a0021858189467ad0f3afc57569c5f7d3beb02a5b55a90 is equal to generated hash sha256@709095264e06526e68a0021858189467ad0f3afc57569c5f7d3beb02a5b55a90
+12/14/2025 02:00:54 PM INFO: Function main: Received hash sha256@c29e104de52a7d769cc998522d8eb00458194de34aeebdec2d9eb73fd338b002 is equal to generated hash sha256@c29e104de52a7d769cc998522d8eb00458194de34aeebdec2d9eb73fd338b002
+12/14/2025 02:00:54 PM INFO: Dummy transmission has completed successfully
+
+12/14/2025 02:00:54 PM INFO: ========================================================================================================================
+
+12/14/2025 02:00:54 PM INFO: Decrypytion has begun
+12/14/2025 02:00:54 PM INFO: Function decrypt: Decrpytion successful for image containing tag b'\x9cF\xa9\x1a\xa8S\xf5i\x9cq\x00%\xf9\x97\xc3\x8f'
+12/14/2025 02:00:54 PM INFO: Function decrypt: Decrpytion successful for image containing tag b'r\n\xacut\x9a%\xa7\x06\xd3\x85\x8fz\x0eu\x16'
+12/14/2025 02:00:56 PM INFO: Function decrypt: Decrpytion successful for image containing tag b'\xbbL\xacHR\x98\xb9.:V\x83\xb3\x9c\xd8\r\xbc'
+12/14/2025 02:00:56 PM INFO: Decryption has completed successfully
+12/14/2025 02:00:56 PM INFO: ========================================================================================================================
+
+12/14/2025 02:00:56 PM INFO: Deserialization has begun
+12/14/2025 02:00:56 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image0.png.
+12/14/2025 02:00:57 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image1.png.
+12/14/2025 02:00:58 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image2.png.
+12/14/2025 02:00:59 PM INFO: Deserialization has completed successfully
+
+12/14/2025 02:00:59 PM INFO: ========================================================================================================================
+
+12/14/2025 02:00:59 PM INFO: Progam has completed without error, plans can now be served to the galaxy
+
+12/14/2025 02:00:59 PM INFO: ************************************************************************************************************************
+
+
+
+
+
+
+12/14/2025 02:01:54 PM INFO: ************************************************************************************************************************
+12/14/2025 02:01:54 PM INFO:
+                                                     _______.     ___      .______    _______ .______      
+                                                    /       |    /   \     |   _  \  |   ____||   _  \     
+                                                    |  (----`   /  ^  \    |  |_)  | |  |__   |  |_)  |    
+                                                    \   \      /  /_\  \   |   _  <  |   __|  |      /     
+                                                .----)   |    /  _____  \  |  |_)  | |  |____ |  |\  \----.
+                                                |_______/    /__/     \__\ |______/  |_______|| _| `._____|
+                                                           
+12/14/2025 02:01:54 PM INFO: ========================================================================================================================
+12/14/2025 02:01:54 PM INFO: SABER demonstration has begun.
+12/14/2025 02:01:54 PM INFO: ========================================================================================================================
+
+12/14/2025 02:01:54 PM INFO: Begin circle detection
+12/14/2025 02:01:54 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image13.png
+12/14/2025 02:01:54 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image_non.png
+12/14/2025 02:01:54 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image35.png
+12/14/2025 02:01:54 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image9.png
+12/14/2025 02:01:54 PM INFO: Function convertHSV: Image converted to HSV on iteration 0.
+12/14/2025 02:01:54 PM INFO: Function convertHSV: Image converted to HSV on iteration 1.
+12/14/2025 02:01:54 PM INFO: Function convertHSV: Image converted to HSV on iteration 2.
+12/14/2025 02:01:54 PM INFO: Function convertHSV: Image converted to HSV on iteration 3.
+12/14/2025 02:01:54 PM INFO: Function maskRed: Image contained red on iteration 0.
+12/14/2025 02:01:54 PM INFO: Function maskRed: Image on iteration 1 did not contain red.
+12/14/2025 02:01:54 PM INFO: Function maskRed: Image contained red on iteration 2.
+12/14/2025 02:01:55 PM INFO: Function maskRed: Image contained red on iteration 3.
+12/14/2025 02:01:55 PM INFO: Function convertBGR: Image converted to BGR on iteration 0
+12/14/2025 02:01:55 PM INFO: Function convertBGR: Image converted to BGR on iteration 1
+12/14/2025 02:01:55 PM INFO: Function convertBGR: Image converted to BGR on iteration 2
+12/14/2025 02:01:57 PM INFO: Function findCircles: Circle detected in image on iteration 0.
+12/14/2025 02:01:57 PM INFO: Function findCircles: Single loop execution took 2.8113443851470947 seconds for index 0.
+12/14/2025 02:01:57 PM INFO: Function findCircles: Circle detected in image on iteration 1.
+12/14/2025 02:01:57 PM INFO: Function findCircles: Single loop execution took 0.12874627113342285 seconds for index 1.
+12/14/2025 02:01:59 PM INFO: Function findCircles: Circle detected in image on iteration 2.
+12/14/2025 02:01:59 PM INFO: Function findCircles: Single loop execution took 1.9182827472686768 seconds for index 2.
+12/14/2025 02:01:59 PM INFO: Function findCircles: Full execution took 4.859145879745483 seconds.
+12/14/2025 02:01:59 PM INFO: Circle detection has completed successfully
+12/14/2025 02:01:59 PM INFO: ========================================================================================================================
+
+12/14/2025 02:01:59 PM INFO: Serialization has begun
+12/14/2025 02:02:00 PM INFO: Function serialize: Image at index 0 serialized.
+12/14/2025 02:02:00 PM INFO: Function serialize: Image at index 1 serialized.
+12/14/2025 02:02:01 PM INFO: Function serialize: Image at index 2 serialized.
+12/14/2025 02:02:01 PM INFO: Serialization has completed successfully
+
+12/14/2025 02:02:01 PM INFO: ========================================================================================================================
+
+12/14/2025 02:02:01 PM INFO: Encryption has begun
+12/14/2025 02:02:09 PM INFO: Encryption has completed successfully
+
+12/14/2025 02:02:09 PM INFO: ========================================================================================================================
+
+12/14/2025 02:02:09 PM INFO: Dummy transmission has begun
+12/14/2025 02:02:09 PM INFO: Function main:  Image loaded to target DB with hash c5979a1886cc5421bb52254b9a4dc3c5c8394b4ca831694fd616e4ba5ca92734 
+12/14/2025 02:02:09 PM INFO: Function main:  Image loaded to target DB with hash e17dfed7305403693dd652d2476d3749ba788fc72cff0b46d9b15cf7a68416b4 
+12/14/2025 02:02:10 PM INFO: Function main:  Image loaded to target DB with hash 8f625f5f9b94097c3e9e27024801c8c8d2dcf21d719f2ca9b0ecdb1cf88d77d5 
+12/14/2025 02:02:10 PM INFO: Function main: Received hash sha256@c5979a1886cc5421bb52254b9a4dc3c5c8394b4ca831694fd616e4ba5ca92734 is equal to generated hash sha256@c5979a1886cc5421bb52254b9a4dc3c5c8394b4ca831694fd616e4ba5ca92734
+12/14/2025 02:02:10 PM INFO: Function main: Received hash sha256@e17dfed7305403693dd652d2476d3749ba788fc72cff0b46d9b15cf7a68416b4 is equal to generated hash sha256@e17dfed7305403693dd652d2476d3749ba788fc72cff0b46d9b15cf7a68416b4
+12/14/2025 02:02:10 PM INFO: Function main: Received hash sha256@8f625f5f9b94097c3e9e27024801c8c8d2dcf21d719f2ca9b0ecdb1cf88d77d5 is equal to generated hash sha256@8f625f5f9b94097c3e9e27024801c8c8d2dcf21d719f2ca9b0ecdb1cf88d77d5
+12/14/2025 02:02:10 PM INFO: Dummy transmission has completed successfully
+
+12/14/2025 02:02:10 PM INFO: ========================================================================================================================
+
+12/14/2025 02:02:10 PM INFO: Decrypytion has begun
+12/14/2025 02:02:10 PM INFO: Function decrypt: Decrpytion successful for image containing tag b'\xb9+\x17Y\xd5\xe7&\xe0\x02\x00S\x8bB2\xcb\x05'
+12/14/2025 02:02:10 PM INFO: Function decrypt: Decrpytion successful for image containing tag b"'\xe0\xfe}\xc7v</\xe1\x9fR\n|\xfd\x1c\xcf"
+12/14/2025 02:02:11 PM INFO: Function decrypt: Decrpytion successful for image containing tag b'\xe0\xdfp\xd8\xb5sO\xbf\xef\x9dM\xaes\xabIq'
+12/14/2025 02:02:12 PM INFO: Decryption has completed successfully
+12/14/2025 02:02:12 PM INFO: ========================================================================================================================
+
+12/14/2025 02:02:12 PM INFO: Deserialization has begun
+12/14/2025 02:02:12 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image0.png.
+12/14/2025 02:02:12 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image1.png.
+12/14/2025 02:02:14 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image2.png.
+12/14/2025 02:02:14 PM INFO: Deserialization has completed successfully
+
+12/14/2025 02:02:14 PM INFO: ========================================================================================================================
+
+12/14/2025 02:02:14 PM INFO: Progam has completed without error, plans can now be served to the galaxy
+
+12/14/2025 02:02:14 PM INFO: ************************************************************************************************************************
+
+
+
+
+
+
+12/14/2025 02:03:52 PM INFO: ************************************************************************************************************************
+12/14/2025 02:03:52 PM INFO:
+                                                     _______.     ___      .______    _______ .______      
+                                                    /       |    /   \     |   _  \  |   ____||   _  \     
+                                                    |  (----`   /  ^  \    |  |_)  | |  |__   |  |_)  |    
+                                                    \   \      /  /_\  \   |   _  <  |   __|  |      /     
+                                                .----)   |    /  _____  \  |  |_)  | |  |____ |  |\  \----.
+                                                |_______/    /__/     \__\ |______/  |_______|| _| `._____|
+                                                           
+12/14/2025 02:03:52 PM INFO: ========================================================================================================================
+12/14/2025 02:03:52 PM INFO: SABER demonstration has begun.
+12/14/2025 02:03:52 PM INFO: ========================================================================================================================
+
+12/14/2025 02:03:52 PM INFO: Begin circle detection
+12/14/2025 02:03:52 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image13.png
+12/14/2025 02:03:52 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image_non.png
+12/14/2025 02:03:52 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image35.png
+12/14/2025 02:03:52 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image9.png
+12/14/2025 02:03:52 PM INFO: Function convertHSV: Image converted to HSV on iteration 0.
+12/14/2025 02:03:52 PM INFO: Function convertHSV: Image converted to HSV on iteration 1.
+12/14/2025 02:03:52 PM INFO: Function convertHSV: Image converted to HSV on iteration 2.
+12/14/2025 02:03:52 PM INFO: Function convertHSV: Image converted to HSV on iteration 3.
+12/14/2025 02:03:52 PM INFO: Function maskRed: Image contained red on iteration 0.
+12/14/2025 02:03:52 PM INFO: Function maskRed: Image on iteration 1 did not contain red.
+12/14/2025 02:03:52 PM INFO: Function maskRed: Image contained red on iteration 2.
+12/14/2025 02:03:53 PM INFO: Function maskRed: Image contained red on iteration 3.
+12/14/2025 02:03:53 PM INFO: Function convertBGR: Image converted to BGR on iteration 0
+12/14/2025 02:03:53 PM INFO: Function convertBGR: Image converted to BGR on iteration 1
+12/14/2025 02:03:53 PM INFO: Function convertBGR: Image converted to BGR on iteration 2
+12/14/2025 02:03:56 PM INFO: Function findCircles: Circle detected in image on iteration 0.
+12/14/2025 02:03:56 PM INFO: Function findCircles: Single loop execution took 2.9807052612304688 seconds for index 0.
+12/14/2025 02:03:56 PM INFO: Function findCircles: Circle detected in image on iteration 1.
+12/14/2025 02:03:56 PM INFO: Function findCircles: Single loop execution took 0.12518739700317383 seconds for index 1.
+12/14/2025 02:03:57 PM INFO: Function findCircles: Circle detected in image on iteration 2.
+12/14/2025 02:03:57 PM INFO: Function findCircles: Single loop execution took 1.7181615829467773 seconds for index 2.
+12/14/2025 02:03:57 PM INFO: Function findCircles: Full execution took 4.824904680252075 seconds.
+12/14/2025 02:03:57 PM INFO: Circle detection has completed successfully
+12/14/2025 02:03:57 PM INFO: ========================================================================================================================
+
+12/14/2025 02:03:57 PM INFO: Serialization has begun
+12/14/2025 02:03:58 PM INFO: Function serialize: Image at index 0 serialized.
+12/14/2025 02:03:58 PM INFO: Function serialize: Image at index 1 serialized.
+12/14/2025 02:03:58 PM INFO: Function serialize: Image at index 2 serialized.
+12/14/2025 02:03:58 PM INFO: Serialization has completed successfully
+
+12/14/2025 02:03:58 PM INFO: ========================================================================================================================
+
+12/14/2025 02:03:58 PM INFO: Encryption has begun
+12/14/2025 02:04:15 PM INFO: Encryption has completed successfully
+
+12/14/2025 02:04:15 PM INFO: ========================================================================================================================
+
+12/14/2025 02:04:15 PM INFO: Dummy transmission has begun
+12/14/2025 02:04:15 PM INFO: Function main:  Image loaded to target DB with hash 255977ea9526bd8ad6637ecfc3ecc4e9f71be59656754f0013e2fd996b0ac6fa 
+12/14/2025 02:04:15 PM INFO: Function main:  Image loaded to target DB with hash 4498dedc4795aa6e43391a0c17559d6db2001ec578bc5587461580e8470d8cc9 
+12/14/2025 02:04:16 PM INFO: Function main:  Image loaded to target DB with hash 541bd6f251edde1ab6e10db78fb6bf7c9a7d9a6c50598e2b1fb69bd4f7dee026 
+12/14/2025 02:04:16 PM INFO: Function main: Received hash sha256@255977ea9526bd8ad6637ecfc3ecc4e9f71be59656754f0013e2fd996b0ac6fa is equal to generated hash sha256@255977ea9526bd8ad6637ecfc3ecc4e9f71be59656754f0013e2fd996b0ac6fa
+12/14/2025 02:04:16 PM INFO: Function main: Received hash sha256@4498dedc4795aa6e43391a0c17559d6db2001ec578bc5587461580e8470d8cc9 is equal to generated hash sha256@4498dedc4795aa6e43391a0c17559d6db2001ec578bc5587461580e8470d8cc9
+12/14/2025 02:04:16 PM INFO: Function main: Received hash sha256@541bd6f251edde1ab6e10db78fb6bf7c9a7d9a6c50598e2b1fb69bd4f7dee026 is equal to generated hash sha256@541bd6f251edde1ab6e10db78fb6bf7c9a7d9a6c50598e2b1fb69bd4f7dee026
+12/14/2025 02:04:16 PM INFO: Dummy transmission has completed successfully
+
+12/14/2025 02:04:16 PM INFO: ========================================================================================================================
+
+12/14/2025 02:04:16 PM INFO: Decrypytion has begun
+12/14/2025 02:04:16 PM INFO: Function decrypt: Decrpytion successful for image containing tag b'V[f\xea\x961\xed\x12\xb1\x9b\x86~9\x1c\x98r'
+12/14/2025 02:04:16 PM INFO: Function decrypt: Decrpytion successful for image containing tag b'\xed\xb1\xb7\xf6\t\xc4\xf8\x99\xb0\xa9\x10"\xfb\xa3\x7f\x1d'
+12/14/2025 02:04:18 PM INFO: Function decrypt: Decrpytion successful for image containing tag b"\xcf\x950\t\x9d_\xfe\xb73\x8crv\xfdZ'\xb3"
+12/14/2025 02:04:19 PM INFO: Decryption has completed successfully
+12/14/2025 02:04:19 PM INFO: ========================================================================================================================
+
+12/14/2025 02:04:19 PM INFO: Deserialization has begun
+12/14/2025 02:04:19 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image0.png.
+12/14/2025 02:04:19 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image1.png.
+12/14/2025 02:04:21 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image2.png.
+12/14/2025 02:04:21 PM INFO: Deserialization has completed successfully
+
+12/14/2025 02:04:21 PM INFO: ========================================================================================================================
+
+12/14/2025 02:04:21 PM INFO: Progam has completed without error, plans can now be served to the galaxy
+
+12/14/2025 02:04:21 PM INFO: ************************************************************************************************************************
+
+
+
+
+
+
+12/14/2025 02:04:54 PM INFO: ************************************************************************************************************************
+12/14/2025 02:04:54 PM INFO:
+                                                     _______.     ___      .______    _______ .______      
+                                                    /       |    /   \     |   _  \  |   ____||   _  \     
+                                                    |  (----`   /  ^  \    |  |_)  | |  |__   |  |_)  |    
+                                                    \   \      /  /_\  \   |   _  <  |   __|  |      /     
+                                                .----)   |    /  _____  \  |  |_)  | |  |____ |  |\  \----.
+                                                |_______/    /__/     \__\ |______/  |_______|| _| `._____|
+                                                           
+12/14/2025 02:04:54 PM INFO: ========================================================================================================================
+12/14/2025 02:04:54 PM INFO: SABER demonstration has begun.
+12/14/2025 02:04:54 PM INFO: ========================================================================================================================
+
+12/14/2025 02:04:54 PM INFO: Begin circle detection
+12/14/2025 02:04:54 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image13.png
+12/14/2025 02:04:55 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image_non.png
+12/14/2025 02:04:55 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image35.png
+12/14/2025 02:04:55 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image9.png
+12/14/2025 02:04:55 PM INFO: Function convertHSV: Image converted to HSV on iteration 0.
+12/14/2025 02:04:55 PM INFO: Function convertHSV: Image converted to HSV on iteration 1.
+12/14/2025 02:04:55 PM INFO: Function convertHSV: Image converted to HSV on iteration 2.
+12/14/2025 02:04:55 PM INFO: Function convertHSV: Image converted to HSV on iteration 3.
+12/14/2025 02:04:55 PM INFO: Function maskRed: Image contained red on iteration 0.
+12/14/2025 02:04:55 PM INFO: Function maskRed: Image on iteration 1 did not contain red.
+12/14/2025 02:04:55 PM INFO: Function maskRed: Image contained red on iteration 2.
+12/14/2025 02:04:55 PM INFO: Function maskRed: Image contained red on iteration 3.
+12/14/2025 02:04:55 PM INFO: Function convertBGR: Image converted to BGR on iteration 0
+12/14/2025 02:04:55 PM INFO: Function convertBGR: Image converted to BGR on iteration 1
+12/14/2025 02:04:55 PM INFO: Function convertBGR: Image converted to BGR on iteration 2
+12/14/2025 02:04:57 PM INFO: Function findCircles: Circle detected in image on iteration 0.
+12/14/2025 02:04:57 PM INFO: Function findCircles: Single loop execution took 2.5175275802612305 seconds for index 0.
+12/14/2025 02:04:58 PM INFO: Function findCircles: Circle detected in image on iteration 1.
+12/14/2025 02:04:58 PM INFO: Function findCircles: Single loop execution took 0.12517571449279785 seconds for index 1.
+12/14/2025 02:05:00 PM INFO: Function findCircles: Circle detected in image on iteration 2.
+12/14/2025 02:05:00 PM INFO: Function findCircles: Single loop execution took 1.8985908031463623 seconds for index 2.
+12/14/2025 02:05:00 PM INFO: Function findCircles: Full execution took 4.541913032531738 seconds.
+12/14/2025 02:05:00 PM INFO: Circle detection has completed successfully
+12/14/2025 02:05:00 PM INFO: ========================================================================================================================
+
+12/14/2025 02:05:00 PM INFO: Serialization has begun
+12/14/2025 02:05:00 PM INFO: Function serialize: Image at index 0 serialized.
+12/14/2025 02:05:00 PM INFO: Function serialize: Image at index 1 serialized.
+12/14/2025 02:05:00 PM INFO: Function serialize: Image at index 2 serialized.
+12/14/2025 02:05:00 PM INFO: Serialization has completed successfully
+
+12/14/2025 02:05:00 PM INFO: ========================================================================================================================
+
+12/14/2025 02:05:00 PM INFO: Encryption has begun
+12/14/2025 02:05:10 PM INFO: Encryption has completed successfully
+
+12/14/2025 02:05:10 PM INFO: ========================================================================================================================
+
+12/14/2025 02:05:10 PM INFO: Dummy transmission has begun
+12/14/2025 02:05:10 PM INFO: Function main:  Image loaded to target DB with hash 37b8142951d0c3b899a56039df643c9049c70a195fe611e2dd7d57806902aaf8 
+12/14/2025 02:05:11 PM INFO: Function main:  Image loaded to target DB with hash e49d3b466d686a60232f3a45939ed6556f85b51c667ac1637619b9ea0db45ac5 
+12/14/2025 02:05:11 PM INFO: Function main:  Image loaded to target DB with hash 868131dc10922d14133dbc0830393c56e99e411f53bf2c4b5a7d448d6729211a 
+12/14/2025 02:05:11 PM INFO: Function main: Received hash sha256@37b8142951d0c3b899a56039df643c9049c70a195fe611e2dd7d57806902aaf8
+ is equal to generated hash sha256@37b8142951d0c3b899a56039df643c9049c70a195fe611e2dd7d57806902aaf8
+12/14/2025 02:05:11 PM INFO: Function main: Received hash sha256@e49d3b466d686a60232f3a45939ed6556f85b51c667ac1637619b9ea0db45ac5
+ is equal to generated hash sha256@e49d3b466d686a60232f3a45939ed6556f85b51c667ac1637619b9ea0db45ac5
+12/14/2025 02:05:11 PM INFO: Function main: Received hash sha256@868131dc10922d14133dbc0830393c56e99e411f53bf2c4b5a7d448d6729211a
+ is equal to generated hash sha256@868131dc10922d14133dbc0830393c56e99e411f53bf2c4b5a7d448d6729211a
+12/14/2025 02:05:11 PM INFO: Dummy transmission has completed successfully
+
+12/14/2025 02:05:11 PM INFO: ========================================================================================================================
+
+12/14/2025 02:05:11 PM INFO: Decrypytion has begun
+12/14/2025 02:05:11 PM INFO: Function decrypt: Decrpytion successful for image containing tag b'=\xee\xad\xdb\x8b\xe4\xe7\xdc\xf75\xc1H\xfe\xd3<\xb3'
+12/14/2025 02:05:11 PM INFO: Function decrypt: Decrpytion successful for image containing tag b'a\xea!GH\x1f\xb4\xb6\x90\xa2\x8ew\x0f\xf7\xbe\x8b'
+12/14/2025 02:05:13 PM INFO: Function decrypt: Decrpytion successful for image containing tag b'\xdf\xbcr\xa2\xe4\x8a\x8e2\xf4\x88\xf3\x89\x95\x10T\x0f'
+12/14/2025 02:05:13 PM INFO: Decryption has completed successfully
+12/14/2025 02:05:13 PM INFO: ========================================================================================================================
+
+12/14/2025 02:05:13 PM INFO: Deserialization has begun
+12/14/2025 02:05:13 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image0.png.
+12/14/2025 02:05:14 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image1.png.
+12/14/2025 02:05:15 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image2.png.
+12/14/2025 02:05:15 PM INFO: Deserialization has completed successfully
+
+12/14/2025 02:05:15 PM INFO: ========================================================================================================================
+
+12/14/2025 02:05:15 PM INFO: Progam has completed without error, plans can now be served to the galaxy
+
+12/14/2025 02:05:15 PM INFO: ************************************************************************************************************************
+
+
+
+
+
+
+12/14/2025 02:10:38 PM INFO: ************************************************************************************************************************
+12/14/2025 02:10:38 PM INFO:
+                                                     _______.     ___      .______    _______ .______      
+                                                    /       |    /   \     |   _  \  |   ____||   _  \     
+                                                    |  (----`   /  ^  \    |  |_)  | |  |__   |  |_)  |    
+                                                    \   \      /  /_\  \   |   _  <  |   __|  |      /     
+                                                .----)   |    /  _____  \  |  |_)  | |  |____ |  |\  \----.
+                                                |_______/    /__/     \__\ |______/  |_______|| _| `._____|
+                                                           
+12/14/2025 02:10:38 PM INFO: ========================================================================================================================
+12/14/2025 02:10:38 PM INFO: SABER demonstration has begun.
+12/14/2025 02:10:38 PM INFO: ========================================================================================================================
+
+12/14/2025 02:10:38 PM INFO: Begin circle detection
+12/14/2025 02:10:38 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image13.png
+12/14/2025 02:10:39 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image_non.png
+12/14/2025 02:10:39 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image35.png
+12/14/2025 02:10:39 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image9.png
+12/14/2025 02:10:39 PM INFO: Function convertHSV: Image converted to HSV on iteration 0.
+12/14/2025 02:10:39 PM INFO: Function convertHSV: Image converted to HSV on iteration 1.
+12/14/2025 02:10:39 PM INFO: Function convertHSV: Image converted to HSV on iteration 2.
+12/14/2025 02:10:39 PM INFO: Function convertHSV: Image converted to HSV on iteration 3.
+12/14/2025 02:10:39 PM INFO: Function maskRed: Image contained red on iteration 0.
+12/14/2025 02:10:39 PM INFO: Function maskRed: Image on iteration 1 did not contain red.
+12/14/2025 02:10:39 PM INFO: Function maskRed: Image contained red on iteration 2.
+12/14/2025 02:10:39 PM INFO: Function maskRed: Image contained red on iteration 3.
+12/14/2025 02:10:39 PM INFO: Function convertBGR: Image converted to BGR on iteration 0
+12/14/2025 02:10:39 PM INFO: Function convertBGR: Image converted to BGR on iteration 1
+12/14/2025 02:10:39 PM INFO: Function convertBGR: Image converted to BGR on iteration 2
+12/14/2025 02:10:42 PM INFO: Function findCircles: Circle detected in image on iteration 0.
+12/14/2025 02:10:42 PM INFO: Function findCircles: Single loop execution took 2.976264715194702 seconds for index 0.
+12/14/2025 02:10:42 PM INFO: Function findCircles: Circle detected in image on iteration 1.
+12/14/2025 02:10:42 PM INFO: Function findCircles: Single loop execution took 0.1457071304321289 seconds for index 1.
+12/14/2025 02:10:44 PM INFO: Function findCircles: Circle detected in image on iteration 2.
+12/14/2025 02:10:44 PM INFO: Function findCircles: Single loop execution took 1.6431715488433838 seconds for index 2.
+12/14/2025 02:10:44 PM INFO: Function findCircles: Full execution took 4.766049146652222 seconds.
+12/14/2025 02:10:44 PM INFO: Circle detection has completed successfully
+12/14/2025 02:10:44 PM INFO: ========================================================================================================================
+
+12/14/2025 02:10:44 PM INFO: Serialization has begun
+12/14/2025 02:10:46 PM INFO: Function serialize: Image at index 0 serialized.
+12/14/2025 02:10:46 PM INFO: Function serialize: Image at index 1 serialized.
+12/14/2025 02:10:46 PM INFO: Function serialize: Image at index 2 serialized.
+12/14/2025 02:10:46 PM INFO: Serialization has completed successfully
+
+12/14/2025 02:10:46 PM INFO: ========================================================================================================================
+
+12/14/2025 02:10:46 PM INFO: Encryption has begun
+12/14/2025 02:10:56 PM INFO: Encryption has completed successfully
+
+12/14/2025 02:10:56 PM INFO: ========================================================================================================================
+
+12/14/2025 02:10:56 PM INFO: Dummy transmission has begun
+12/14/2025 02:10:56 PM INFO: Function main:  Image loaded to target DB with hash e7d3537853f61001b92a604adcf954f96fb7415c215de30e09599da3deb62bbf 
+12/14/2025 02:10:57 PM INFO: Function main:  Image loaded to target DB with hash 2fb10a6b2fbbaec98f81245c8cafee266148f22e1fc53127cb23658e207532aa 
+12/14/2025 02:10:57 PM INFO: Function main:  Image loaded to target DB with hash 99a34fa17d5767de705012416072be6f36a4fab9dc4f10019eaecd0a398eb265 
+12/14/2025 02:10:58 PM INFO: Function main: Received hash sha256@e7d3537853f61001b92a604adcf954f96fb7415c215de30e09599da3deb62bbf
+                                           is equal to generated hash sha256@e7d3537853f61001b92a604adcf954f96fb7415c215de30e09599da3deb62bbf
+12/14/2025 02:10:58 PM INFO: Function main: Received hash sha256@2fb10a6b2fbbaec98f81245c8cafee266148f22e1fc53127cb23658e207532aa
+                                           is equal to generated hash sha256@2fb10a6b2fbbaec98f81245c8cafee266148f22e1fc53127cb23658e207532aa
+12/14/2025 02:10:58 PM INFO: Function main: Received hash sha256@99a34fa17d5767de705012416072be6f36a4fab9dc4f10019eaecd0a398eb265
+                                           is equal to generated hash sha256@99a34fa17d5767de705012416072be6f36a4fab9dc4f10019eaecd0a398eb265
+12/14/2025 02:10:58 PM INFO: Dummy transmission has completed successfully
+
+12/14/2025 02:10:58 PM INFO: ========================================================================================================================
+
+12/14/2025 02:10:58 PM INFO: Decrypytion has begun
+12/14/2025 02:10:58 PM INFO: Function decrypt: Decrpytion successful for image containing tag b';\x7f-\xdf\x82I2p\xb8\\vb\x19\x9b\x9c\xd9'
+12/14/2025 02:10:58 PM INFO: Function decrypt: Decrpytion successful for image containing tag b'\x06\xfcw\xef\t\x04e?3\xff\x8bD\x82\xdc#\xa4'
+12/14/2025 02:10:59 PM INFO: Function decrypt: Decrpytion successful for image containing tag b':\x08\xc3\x0c\xc2\x10\xb7\x8eS\xa8B|\x83t\xf8n'
+12/14/2025 02:11:00 PM INFO: Decryption has completed successfully
+12/14/2025 02:11:00 PM INFO: ========================================================================================================================
+
+12/14/2025 02:11:00 PM INFO: Deserialization has begun
+12/14/2025 02:11:00 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image0.png.
+12/14/2025 02:11:00 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image1.png.
+12/14/2025 02:11:02 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image2.png.
+12/14/2025 02:11:02 PM INFO: Deserialization has completed successfully
+
+12/14/2025 02:11:02 PM INFO: ========================================================================================================================
+
+12/14/2025 02:11:02 PM INFO: Progam has completed without error, plans can now be served to the galaxy
+
+12/14/2025 02:11:02 PM INFO: ************************************************************************************************************************
+
+
+
+
+
+
+12/14/2025 02:11:31 PM INFO: ************************************************************************************************************************
+12/14/2025 02:11:31 PM INFO:
+                                                     _______.     ___      .______    _______ .______      
+                                                    /       |    /   \     |   _  \  |   ____||   _  \     
+                                                    |  (----`   /  ^  \    |  |_)  | |  |__   |  |_)  |    
+                                                    \   \      /  /_\  \   |   _  <  |   __|  |      /     
+                                                .----)   |    /  _____  \  |  |_)  | |  |____ |  |\  \----.
+                                                |_______/    /__/     \__\ |______/  |_______|| _| `._____|
+                                                           
+12/14/2025 02:11:31 PM INFO: ========================================================================================================================
+12/14/2025 02:11:31 PM INFO: SABER demonstration has begun.
+12/14/2025 02:11:31 PM INFO: ========================================================================================================================
+
+12/14/2025 02:11:31 PM INFO: Begin circle detection
+12/14/2025 02:11:32 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image13.png
+12/14/2025 02:11:32 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image_non.png
+12/14/2025 02:11:32 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image35.png
+12/14/2025 02:11:32 PM INFO: Function loadImages: Image loaded from /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/image9.png
+12/14/2025 02:11:32 PM INFO: Function convertHSV: Image converted to HSV on iteration 0.
+12/14/2025 02:11:32 PM INFO: Function convertHSV: Image converted to HSV on iteration 1.
+12/14/2025 02:11:32 PM INFO: Function convertHSV: Image converted to HSV on iteration 2.
+12/14/2025 02:11:32 PM INFO: Function convertHSV: Image converted to HSV on iteration 3.
+12/14/2025 02:11:32 PM INFO: Function maskRed: Image contained red on iteration 0.
+12/14/2025 02:11:33 PM INFO: Function maskRed: Image on iteration 1 did not contain red.
+12/14/2025 02:11:33 PM INFO: Function maskRed: Image contained red on iteration 2.
+12/14/2025 02:11:33 PM INFO: Function maskRed: Image contained red on iteration 3.
+12/14/2025 02:11:33 PM INFO: Function convertBGR: Image converted to BGR on iteration 0
+12/14/2025 02:11:33 PM INFO: Function convertBGR: Image converted to BGR on iteration 1
+12/14/2025 02:11:33 PM INFO: Function convertBGR: Image converted to BGR on iteration 2
+12/14/2025 02:11:35 PM INFO: Function findCircles: Circle detected in image on iteration 0.
+12/14/2025 02:11:35 PM INFO: Function findCircles: Single loop execution took 2.42227840423584 seconds for index 0.
+12/14/2025 02:11:35 PM INFO: Function findCircles: Circle detected in image on iteration 1.
+12/14/2025 02:11:35 PM INFO: Function findCircles: Single loop execution took 0.1421680450439453 seconds for index 1.
+12/14/2025 02:11:37 PM INFO: Function findCircles: Circle detected in image on iteration 2.
+12/14/2025 02:11:37 PM INFO: Function findCircles: Single loop execution took 1.8424382209777832 seconds for index 2.
+12/14/2025 02:11:37 PM INFO: Function findCircles: Full execution took 4.407803297042847 seconds.
+12/14/2025 02:11:37 PM INFO: Circle detection has completed successfully
+12/14/2025 02:11:37 PM INFO: ========================================================================================================================
+
+12/14/2025 02:11:37 PM INFO: Serialization has begun
+12/14/2025 02:11:37 PM INFO: Function serialize: Image at index 0 serialized.
+12/14/2025 02:11:38 PM INFO: Function serialize: Image at index 1 serialized.
+12/14/2025 02:11:38 PM INFO: Function serialize: Image at index 2 serialized.
+12/14/2025 02:11:38 PM INFO: Serialization has completed successfully
+
+12/14/2025 02:11:38 PM INFO: ========================================================================================================================
+
+12/14/2025 02:11:38 PM INFO: Encryption has begun
+12/14/2025 02:11:47 PM INFO: Encryption has completed successfully
+
+12/14/2025 02:11:47 PM INFO: ========================================================================================================================
+
+12/14/2025 02:11:47 PM INFO: Dummy transmission has begun
+12/14/2025 02:11:47 PM INFO: Function main:  Image loaded to target DB with hash 7017ce21174e86610de04527d1ada9982031285ad302c9e13a791774864e6431 
+12/14/2025 02:11:47 PM INFO: Function main:  Image loaded to target DB with hash a0458db24ea1aa667302ef5933a21166fd1360b7566101faa0afd2fb689564c7 
+12/14/2025 02:11:48 PM INFO: Function main:  Image loaded to target DB with hash 00f94eb69580531682b1c7291946f3925b94636131576c995d8d41cf47d0d11c 
+12/14/2025 02:11:48 PM INFO: Function main: Received hash sha256@7017ce21174e86610de04527d1ada9982031285ad302c9e13a791774864e6431
+                                            is equal to generated hash sha256@7017ce21174e86610de04527d1ada9982031285ad302c9e13a791774864e6431
+12/14/2025 02:11:48 PM INFO: Function main: Received hash sha256@a0458db24ea1aa667302ef5933a21166fd1360b7566101faa0afd2fb689564c7
+                                            is equal to generated hash sha256@a0458db24ea1aa667302ef5933a21166fd1360b7566101faa0afd2fb689564c7
+12/14/2025 02:11:48 PM INFO: Function main: Received hash sha256@00f94eb69580531682b1c7291946f3925b94636131576c995d8d41cf47d0d11c
+                                            is equal to generated hash sha256@00f94eb69580531682b1c7291946f3925b94636131576c995d8d41cf47d0d11c
+12/14/2025 02:11:48 PM INFO: Dummy transmission has completed successfully
+
+12/14/2025 02:11:48 PM INFO: ========================================================================================================================
+
+12/14/2025 02:11:48 PM INFO: Decrypytion has begun
+12/14/2025 02:11:48 PM INFO: Function decrypt: Decrpytion successful for image containing tag b'zt\x13u\xb4z\xab\x9b\x93n\xf6\x9c\xfc\xf3r\x97'
+12/14/2025 02:11:48 PM INFO: Function decrypt: Decrpytion successful for image containing tag b'\t<\xa9\xd6e\xce?U\xd9c\xbc\xc5\x1e\x84\x06>'
+12/14/2025 02:11:59 PM INFO: Function decrypt: Decrpytion successful for image containing tag b'\xa8\x19x\x9c\x8d\xc1\xd7\xae\x88\xa9\x1d>\xe6\x1c\x07\x13'
+12/14/2025 02:11:59 PM INFO: Decryption has completed successfully
+12/14/2025 02:11:59 PM INFO: ========================================================================================================================
+
+12/14/2025 02:11:59 PM INFO: Deserialization has begun
+12/14/2025 02:12:00 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image0.png.
+12/14/2025 02:12:00 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image1.png.
+12/14/2025 02:12:01 PM INFO: Function deserialize: Data received saved to /home/smullins/PycharmProjects/SABER-CEG498X/Database/images/received/image2.png.
+12/14/2025 02:12:02 PM INFO: Deserialization has completed successfully
+
+12/14/2025 02:12:02 PM INFO: ========================================================================================================================
+
+12/14/2025 02:12:02 PM INFO: Progam has completed without error, plans can now be served to the galaxy
+
+12/14/2025 02:12:02 PM INFO: ************************************************************************************************************************
+
+
+
+
+
+

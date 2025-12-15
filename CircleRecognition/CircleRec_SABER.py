@@ -11,8 +11,11 @@ updates the database to indicate a true or a false based on the detection result
 """
 import cv2
 import numpy as np
-from database.Database_SABER import Database_SABER
+from Database.Database_SABER import Database_SABER
 import time
+from Utilities.validationUtility_SABER import validationUtility_SABER, handleExceptions, retryOn
+import logging
+logger = logging.getLogger("CircleRec_SABER")
 #Constants
 #HSV Red Spectrum Upper and lower values
 
@@ -21,7 +24,7 @@ URED1 = np.array([10,255,255])
 LRED2 = np.array([160,100,100])
 URED2 = np.array([180,255,255])
 
-
+Val = validationUtility_SABER
 
 
 
@@ -45,6 +48,8 @@ class CircleRec_SABER:
         self.imagePaths = None
         self.DB = Database_SABER()
 
+    
+    @handleExceptions(reRaise=False)
     def warmupHough(self):
         # warm up common sizes (add any others you use)
         sizes = [(1024, 1024), (768, 1349), (720, 1280)]
@@ -64,24 +69,45 @@ class CircleRec_SABER:
                 minRadius=self.minRadius,
                 maxRadius=self.maxRadius
             )
+
+
     def __del__(self):
         self.DB.cleanup()
+
+    @handleExceptions(reRaise=True)
     def  loadImages(self):
+        
         """Loads images for analysis from DB by retrieving paths, using opencv's imread, and appending them to an object -SAM"""
         self.imagePaths, self.imageIDs = self.DB.bulkRetrieval('origin','path')
+        Val.emptyCheck(self.imagePaths, "Image path array")
         for path in self.imagePaths:
-            self.imageArray.append(cv2.imread(str(path)))
+            Val.emptyCheck(str(path),"Path from imagePaths")
+            Val.pathExists(str(path))
+            
+
+            logger.info(f" Function {self.loadImages.__name__}: Image loaded from {str(path)}")
+
+            loaded = cv2.imread(str(path))
+            Val.emptyCheck(loaded)
+            self.imageArray.append(loaded)
 
 
 
+    @handleExceptions(reRaise=True)
     def convertHSV(self):
         """Converts images to HSV values using cvtColor, HSV is used for hue analysis -SAM"""
-        for image in self.imageArray:
-            self.imageArrayHSV.append(cv2.cvtColor(image,cv2.COLOR_BGR2HSV))
+        Val.emptyCheck(self.imageArray)
+        for i,image in enumerate(self.imageArray):
+            Val.emptyCheck(image, "Image from imageArray")
+            logger.info(f" Function {self.convertHSV.__name__}: Image converted to HSV on iteration {i}.")
 
+            self.imageArrayHSV.append(cv2.cvtColor(image,cv2.COLOR_BGR2HSV))
+    @handleExceptions(reRaise=True)
     def maskRed(self):
         """Masks for all red hues, if none exist, both red and circle are updated in the DB to be false,
          if red exists in an image, just red is updated to be true for that image. -SAM"""
+        Val.emptyCheck(self.imageArrayHSV, "HSV image array")
+        Val.emptyCheck(self.imageIDs, "")
         for i,image in enumerate(self.imageArrayHSV):
             #create redmask on image list
             mask1 = cv2.inRange(image, LRED1,URED1)
@@ -94,26 +120,32 @@ class CircleRec_SABER:
                 self.imageArrayRedMasked.append(image)
                 self.redIDs.append(self.imageIDs[i])
                 self.DB.setValue('origin','hasRed',1,'id',self.imageIDs[i])
+                logger.info(f" Function {self.maskRed.__name__}: Image contained red on iteration {i}.")
             else:
                 self.DB.setValue('origin','hasRed',0,'id',self.imageIDs[i])
                 self.DB.setValue('origin','hasCircle',0,'id',self.imageIDs[i])
-
+                logger.info(f" Function {self.maskRed.__name__}: Image on iteration {i} did not contain red.")
+    
+    @handleExceptions(reRaise=True)
     def convertBGR(self):
         """converts images containing red to BGR format, this is going to be used for circle detection -SAM"""
-        for image in self.imageArrayRedMasked:
+        Val.emptyCheck(self.imageArrayRedMasked, "Red masked array")
+        for i,image in enumerate(self.imageArrayRedMasked):
              self.imageArrayBGR.append(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
+             logger.info(f" Function {self.convertBGR.__name__}: Image converted to BGR on iteration {i}")
 
 
 
-
+    @handleExceptions(reRaise=True)
     def findCircles(self):
         """uses a Hough Transform to detect for circles in the images converted to bgr,
         also creates circles to place on the image for visual debugging
         and updates the database to indicate if circles were found or not in the images that had red -SAM"""
         cv2.setUseOptimized(True)
-
+        t0 = time.time()
+        Val.emptyCheck(self.imageArrayBGR, "BGR Image Array is empty")
         for i, image in enumerate(self.imageArrayBGR):
-
+            t2 = time.time()
 
             #convert to grayscale, needed for circle detection
             grayImage = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -144,6 +176,7 @@ class CircleRec_SABER:
                 self.DB.setValue('origin','hasCircle',1,'id',self.redIDs[i])
 
                 self.circleIDs.append(self.redIDs[i])
+                logger.info(f" Function {self.findCircles.__name__}: Circle detected in image on iteration {i}.")
                 #circles = np.uint16(np.around(circles))
 
                 # for j in circles[0,:]:
@@ -154,9 +187,12 @@ class CircleRec_SABER:
                 #     cv2.circle(currentOrig,(j[0],j[1]),2,(0,0,255),3)
 
             else:
-
                 self.DB.setValue('origin','hasCircle', 0, 'id', self.redIDs[i])
-
+                logger.info(f" Function {self.findCircles.__name__}: Circle not detected in image on iteration {i}.")
+            t3 = time.time()
+            logger.info(f" Function {self.findCircles.__name__}: Single loop execution took {t3-t2} seconds for index {i}.")
+        t1 = time.time()
+        logger.info(f" Function {self.findCircles.__name__}: Full execution took {t1-t0} seconds.")
 
     #DEBGUG METHODS
     def plotCircles(self):
@@ -167,19 +203,7 @@ class CircleRec_SABER:
             # Destroy all created windows
             cv2.destroyAllWindows()
 
-    def printResults(self):
-        """original validation function for initial development,
-        prints results to the console -SAM"""
-        for id_t in range(len(self.redIDs)):
-            print('Red detected in ' + self.DB.getValue('origin',id_t,'id','imageName'))
 
-        #the indexes stored for images that contain circles are relative to the indexes of images that contain red,
-        # to recover the original file names we have to index the redIndexArray from the circleIndexArray
-        for id_t in self.circleIDs:
-            print('Circle detected in ' + self.DB.getValue('origin',id_t,'id','imageName'))
-    def saveImages(self):
-        """saves identified images to files for further validation, saves file as originaltitle_{dp}_{minDist}_{param1}_{param2}_{minRadius}_{maxRadius}.originalextenstion"""
-        pass
 
     #ENTRYPOINT
     def main(self):
@@ -191,6 +215,3 @@ class CircleRec_SABER:
 
         self.findCircles()
         self.__del__()
-    #DEBUG ENTRYPOINT
-
-
