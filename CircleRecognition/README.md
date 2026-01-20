@@ -37,6 +37,10 @@ Publicly callable methods:
 This class is designed to initialize the origin side database, it is the first instanciation of a Database object referencing the origin database.
 
 Internal methods that perform database interactions:
-```self.loadImages``` calls ```DB.bulkRetrieval``` searching for the 'path' column in the 'origin' database, querying all rows. This database method also grabs the id of the database entry every call to keep indexing consistent between rows.
+```self.loadImages``` calls ```DB.bulkRetrieval()``` searching for the 'path' column in the 'origin' database, querying all rows. This database method also grabs the id of the database entry every call to keep indexing consistent between rows.
+
 ```self.maskRed``` calls ```DB.setValue``` and modifies the 'hasRed' column and conditionally the 'hasCircle' column in the 'origin' table. The call for setValue references the 'id' value associated with each image.
-```self.findCircles``` calls ```DB.setValue``` which sets the 'hasCircle' column in the 'origin' database.
+
+```self.findCircles``` calls ```DB.setValue()``` which sets the 'hasCircle' column in the 'origin' database.
+
+```self.__del__``` calls ```Database_SABER.cleanup()``` to close connection to the database. 
