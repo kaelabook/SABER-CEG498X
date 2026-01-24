@@ -1,4 +1,4 @@
-# CircleRecognition
+# Database
 ## Description
 Database class to handle database interactions and configuration storage.
 ## External Dependencies
